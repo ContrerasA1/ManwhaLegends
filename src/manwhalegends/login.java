@@ -172,7 +172,7 @@ public class login extends javax.swing.JFrame {
 
         if (rs.next()) {
             
-            Session.getInstance().setUserId(rs.getInt("u_id"));
+           Session.getInstance().setUserId(rs.getInt("u_id"));
            Session.getInstance().setUserType(rs.getString("type"));
 
             String userType = rs.getString("type");
@@ -181,12 +181,17 @@ public class login extends javax.swing.JFrame {
                 
                 new admindashboard().setVisible(true);
                 this.dispose();
+                
 
             } else if (userType.equalsIgnoreCase("reader")) {
+                
+                
 
                 new readerdashboard().setVisible(true);
                 this.dispose();
             }
+            
+            
 
         } else {
             JOptionPane.showMessageDialog(this, "Invalid Email or Password!");

@@ -5,6 +5,9 @@
  */
 package CRUDadmin;
 
+import config.config;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER27
@@ -27,21 +30,176 @@ public class AddUsers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        AddHeader = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        AStatus = new javax.swing.JLabel();
+        AName = new javax.swing.JLabel();
+        AEmail = new javax.swing.JLabel();
+        AType = new javax.swing.JLabel();
+        Cancelbtn = new javax.swing.JButton();
+        Addbtn = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        AddPassword = new javax.swing.JTextField();
+        AddName = new javax.swing.JTextField();
+        AddEmail = new javax.swing.JTextField();
+        AddType = new javax.swing.JTextField();
+        APassword = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        AddStatus = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manwhalegends.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 270, 200, 80));
+
+        AddHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 36)); // NOI18N
+        AddHeader.setText("Add User");
+        jPanel1.add(AddHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, 40));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 560, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 560, 10));
+
+        AStatus.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        AStatus.setText("Status:");
+        jPanel1.add(AStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        AName.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        AName.setText("Name:");
+        jPanel1.add(AName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+
+        AEmail.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        AEmail.setText("Email:");
+        jPanel1.add(AEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+        AType.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        AType.setText("Type:");
+        jPanel1.add(AType, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+
+        Cancelbtn.setText("Cancel");
+        Cancelbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelbtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Cancelbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 70, 40));
+
+        Addbtn.setText("Add");
+        Addbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddbtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 70, 40));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 50, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 50, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 50, 10));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 70, 10));
+
+        AddPassword.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        AddPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AddPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 360, 30));
+
+        AddName.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        AddName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddNameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AddName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 360, 30));
+
+        AddEmail.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        AddEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddEmailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AddEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 360, 30));
+
+        AddType.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        AddType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddTypeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AddType, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 360, 30));
+
+        APassword.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        APassword.setText("Password:");
+        jPanel1.add(APassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 40, 10));
+
+        AddStatus.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        AddStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddStatusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AddStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 360, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 350));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CancelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelbtnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CancelbtnActionPerformed
+
+    private void AddbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddbtnActionPerformed
+    String name = AddName.getText();
+    String email = AddEmail.getText();
+    String password = AddPassword.getText();
+    String type = AddType.getText();
+    String status = AddStatus.getText();
+
+    try {
+        config con = new config();
+        String sql = "INSERT INTO tbl_Acc (name, email, password, type, status) VALUES ('"
+                + name + "','" + email + "','" + password + "','" + type + "','" + status + "')";
+        con.executeUpdate(sql);
+
+        JOptionPane.showMessageDialog(this, "User added successfully!");
+        this.dispose();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_AddbtnActionPerformed
+
+    private void AddNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddNameActionPerformed
+
+    private void AddEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddEmailActionPerformed
+
+    private void AddPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddPasswordActionPerformed
+
+    private void AddTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddTypeActionPerformed
+
+    private void AddStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +237,27 @@ public class AddUsers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AEmail;
+    private javax.swing.JLabel AName;
+    private javax.swing.JLabel APassword;
+    private javax.swing.JLabel AStatus;
+    private javax.swing.JLabel AType;
+    private javax.swing.JTextField AddEmail;
+    private javax.swing.JLabel AddHeader;
+    private javax.swing.JTextField AddName;
+    private javax.swing.JTextField AddPassword;
+    private javax.swing.JTextField AddStatus;
+    private javax.swing.JTextField AddType;
+    private javax.swing.JButton Addbtn;
+    private javax.swing.JButton Cancelbtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     // End of variables declaration//GEN-END:variables
 }

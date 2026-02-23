@@ -24,7 +24,17 @@ public class readerdashboard extends javax.swing.JFrame {
     //constructor ni wally boldyola
     public readerdashboard() {
         initComponents();
-        loadReaderProfile();
+        
+         Session session = Session.getInstance();
+
+if (!session.isLoggedIn()) {
+    JOptionPane.showMessageDialog(this,
+            "You must login first!");
+    new login().setVisible(true);
+    this.dispose();
+    return;
+}
+loadReaderProfile();
     }
     
     //method para modisplay and users profile
@@ -114,7 +124,7 @@ public void loadReaderProfile() {
                 ProfileReaderActionPerformed(evt);
             }
         });
-        MenuPNL.add(ProfileReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        MenuPNL.add(ProfileReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 40));
 
         Explore.setText("Explore");
         Explore.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +132,7 @@ public void loadReaderProfile() {
                 ExploreActionPerformed(evt);
             }
         });
-        MenuPNL.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
+        MenuPNL.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 90, 40));
 
         Favorites.setText("Favorites");
         Favorites.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +140,7 @@ public void loadReaderProfile() {
                 FavoritesActionPerformed(evt);
             }
         });
-        MenuPNL.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
+        MenuPNL.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 90, 40));
 
         LogoutAdmin.setText("Logout");
         LogoutAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +148,7 @@ public void loadReaderProfile() {
                 LogoutAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 266, -1, -1));
+        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 90, 30));
 
         jPanel1.add(MenuPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 350));
 

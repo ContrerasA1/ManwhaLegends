@@ -5,6 +5,9 @@
  */
 package CRUDadmin;
 
+import config.config;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER27
@@ -14,9 +17,17 @@ public class UpdateUsers extends javax.swing.JFrame {
     /**
      * Creates new form UpdateUsers
      */
-    public UpdateUsers() {
-        initComponents();
-    }
+    private int userId;
+
+public UpdateUsers(int u_id, String name, String email, String type, String status) {
+    initComponents();
+    this.userId = u_id;
+
+    UpdateName.setText(name);
+    UpdateEmail.setText(email);
+    UpdateType.setText(type);
+    UpdateStatus.setText(status);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +38,161 @@ public class UpdateUsers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        UpdateHeader = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        UStatus = new javax.swing.JLabel();
+        UName = new javax.swing.JLabel();
+        UEmail = new javax.swing.JLabel();
+        UType = new javax.swing.JLabel();
+        Cancelbtn = new javax.swing.JButton();
+        Updatebtn = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        UpdateStatus = new javax.swing.JTextField();
+        UpdateName = new javax.swing.JTextField();
+        UpdateEmail = new javax.swing.JTextField();
+        UpdateType = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manwhalegends.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 240, 220, 100));
+
+        UpdateHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 36)); // NOI18N
+        UpdateHeader.setText("Update User");
+        jPanel1.add(UpdateHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, 40));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 560, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 560, 10));
+
+        UStatus.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        UStatus.setText("Status:");
+        jPanel1.add(UStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        UName.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        UName.setText("Name:");
+        jPanel1.add(UName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+
+        UEmail.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        UEmail.setText("Email:");
+        jPanel1.add(UEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        UType.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        UType.setText("Type:");
+        jPanel1.add(UType, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        Cancelbtn.setText("Cancel");
+        Cancelbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelbtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Cancelbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 70, 40));
+
+        Updatebtn.setText("Upate");
+        Updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatebtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 70, 40));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 50, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 50, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 40, 10));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 40, 10));
+
+        UpdateStatus.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        UpdateStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateStatusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(UpdateStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 360, 30));
+
+        UpdateName.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        UpdateName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateNameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(UpdateName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 360, 30));
+
+        UpdateEmail.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        UpdateEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateEmailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(UpdateEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 360, 30));
+
+        UpdateType.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
+        UpdateType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateTypeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(UpdateType, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 360, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 350));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CancelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelbtnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CancelbtnActionPerformed
+
+    private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
+String name = UpdateName.getText();
+    String email = UpdateEmail.getText();
+    String type = UpdateType.getText();
+    String status = UpdateStatus.getText();
+
+    try {
+        config con = new config();
+        String sql = "UPDATE tbl_Acc SET "
+                + "name='" + name + "', "
+                + "email='" + email + "', "
+                + "type='" + type + "', "
+                + "status='" + status + "' "
+                + "WHERE u_id=" + userId;
+
+        con.executeUpdate(sql);
+
+        JOptionPane.showMessageDialog(this, "User updated successfully!");
+        this.dispose();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
+      
+       
+    }//GEN-LAST:event_UpdatebtnActionPerformed
+
+    private void UpdateStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateStatusActionPerformed
+
+    private void UpdateNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateNameActionPerformed
+
+    private void UpdateEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateEmailActionPerformed
+
+    private void UpdateTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateTypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +230,24 @@ public class UpdateUsers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelbtn;
+    private javax.swing.JLabel UEmail;
+    private javax.swing.JLabel UName;
+    private javax.swing.JLabel UStatus;
+    private javax.swing.JLabel UType;
+    private javax.swing.JTextField UpdateEmail;
+    private javax.swing.JLabel UpdateHeader;
+    private javax.swing.JTextField UpdateName;
+    private javax.swing.JTextField UpdateStatus;
+    private javax.swing.JTextField UpdateType;
+    private javax.swing.JButton Updatebtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     // End of variables declaration//GEN-END:variables
 }

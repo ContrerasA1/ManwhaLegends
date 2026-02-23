@@ -333,4 +333,16 @@ public void searchAdminManwha(String keyword, JTable table) {
         System.out.println("Admin Search Error: " + e.getMessage());
     }
 }
+//method ni CRUD para UsersTable
+public void executeUpdate(String sql) {
+    try {
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:AlGUI.db");
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        stmt.close();
+        conn.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 }

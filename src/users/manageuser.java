@@ -5,6 +5,8 @@
  */
 package users;
 
+import CRUDadmin.AddUsers;
+import CRUDadmin.UpdateUsers;
 import config.config;
 import javax.swing.JOptionPane;
 import manwhalegends.login;
@@ -54,7 +56,7 @@ public class manageuser extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         RefreshUser = new javax.swing.JButton();
         AddUser = new javax.swing.JButton();
-        Add3 = new javax.swing.JButton();
+        Update = new javax.swing.JButton();
         DeleteUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,7 +124,7 @@ public class manageuser extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(UsersTable);
 
-        MainPNL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 550, 350));
+        MainPNL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 550, 340));
         MainPNL.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 550, 20));
 
         Add.setText("Add");
@@ -152,13 +154,13 @@ public class manageuser extends javax.swing.JFrame {
         });
         BodyPanel.add(AddUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 80, 30));
 
-        Add3.setText("Update");
-        Add3.addActionListener(new java.awt.event.ActionListener() {
+        Update.setText("Update");
+        Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Add3ActionPerformed(evt);
+                UpdateActionPerformed(evt);
             }
         });
-        BodyPanel.add(Add3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 80, 30));
+        BodyPanel.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 80, 30));
 
         DeleteUser.setText("Delete");
         DeleteUser.addActionListener(new java.awt.event.ActionListener() {
@@ -207,20 +209,64 @@ this.dispose();
     }//GEN-LAST:event_AddActionPerformed
 
     private void RefreshUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshUserActionPerformed
+    loadUsers();
 
      
     }//GEN-LAST:event_RefreshUserActionPerformed
 
     private void AddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserActionPerformed
-        // TODO add your handling code here:
+    AddUsers AddUser = new AddUsers();
+    AddUser.setVisible(true);
+
     }//GEN-LAST:event_AddUserActionPerformed
 
-    private void Add3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Add3ActionPerformed
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+          int row = UsersTable.getSelectedRow();
+
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a user to update.");
+        return;
+    }
+
+    int u_id = Integer.parseInt(UsersTable.getValueAt(row, 0).toString());
+    String name = UsersTable.getValueAt(row, 1).toString();
+    String email = UsersTable.getValueAt(row, 2).toString();
+    String type = UsersTable.getValueAt(row, 4).toString();
+    String status = UsersTable.getValueAt(row, 5).toString();
+
+    UpdateUsers Update = new UpdateUsers(u_id, name, email, type, status);
+    Update.setVisible(true);
+    
+
+
+    }//GEN-LAST:event_UpdateActionPerformed
 
     private void DeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUserActionPerformed
-        // TODO add your handling code here:
+        int row = UsersTable.getSelectedRow();
+
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a user to delete.");
+        return;
+    }
+
+    int u_id = Integer.parseInt(UsersTable.getValueAt(row, 0).toString());
+
+    int confirm = JOptionPane.showConfirmDialog(this,
+            "Are you sure you want to delete this user?",
+            "Confirm Delete",
+            JOptionPane.YES_NO_OPTION);
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        try {
+            config con = new config();
+            con.executeUpdate("DELETE FROM tbl_Acc WHERE u_id = " + u_id);
+            JOptionPane.showMessageDialog(this, "User deleted successfully!");
+            loadUsers();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error deleting user: " + e.getMessage());
+        }
+    }
+
     }//GEN-LAST:event_DeleteUserActionPerformed
 
     /**
@@ -260,7 +306,6 @@ this.dispose();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
-    private javax.swing.JButton Add3;
     private javax.swing.JButton AddUser;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JButton DeleteUser;
@@ -272,6 +317,7 @@ this.dispose();
     private javax.swing.JButton OverviewAdmin;
     private javax.swing.JButton RefreshUser;
     private javax.swing.JLabel SystemLogo;
+    private javax.swing.JButton Update;
     private javax.swing.JButton Users;
     private javax.swing.JTable UsersTable;
     private javax.swing.JScrollPane jScrollPane1;

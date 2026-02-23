@@ -5,6 +5,7 @@
  */
 package userdashboard;
 
+import config.Session;
 import javax.swing.JOptionPane;
 import manwhalegends.login;
 import users.managemanwha;
@@ -21,6 +22,20 @@ public class admindashboard extends javax.swing.JFrame {
      */
     public admindashboard() {
         initComponents();
+        
+        Session session = Session.getInstance();
+
+if (!session.isLoggedIn() || 
+    !session.getUserType().equalsIgnoreCase("admin")) {
+
+    JOptionPane.showMessageDialog(this,
+            "You must login as Admin!",
+            "Access Denied",
+            JOptionPane.ERROR_MESSAGE);
+
+    new login().setVisible(true);
+    this.dispose();
+}
     }
 
     /**
@@ -63,7 +78,7 @@ public class admindashboard extends javax.swing.JFrame {
                 OverviewAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(OverviewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        MenuPNL.add(OverviewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 40));
 
         Users.setText("Users");
         Users.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -72,7 +87,7 @@ public class admindashboard extends javax.swing.JFrame {
                 UsersActionPerformed(evt);
             }
         });
-        MenuPNL.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
+        MenuPNL.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 90, 40));
 
         ManageManwha.setText("Manwha");
         ManageManwha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -81,7 +96,7 @@ public class admindashboard extends javax.swing.JFrame {
                 ManageManwhaActionPerformed(evt);
             }
         });
-        MenuPNL.add(ManageManwha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
+        MenuPNL.add(ManageManwha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, 40));
 
         LogoutAdmin.setText("Logout");
         LogoutAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -90,7 +105,7 @@ public class admindashboard extends javax.swing.JFrame {
                 LogoutAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 303, 100, 30));
 
         jPanel1.add(MenuPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 340));
 
