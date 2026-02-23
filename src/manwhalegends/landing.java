@@ -62,27 +62,27 @@ public class landing extends javax.swing.JFrame {
 
         ManwhalegendsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manwhalegends.png"))); // NOI18N
         ManwhalegendsLogo.setOpaque(true);
-        LandingPNLBlack.add(ManwhalegendsLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, 100));
+        LandingPNLBlack.add(ManwhalegendsLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 220, 160));
 
-        Title3.setFont(new java.awt.Font("Palatino Linotype", 3, 36)); // NOI18N
+        Title3.setFont(new java.awt.Font("Gabriola", 3, 36)); // NOI18N
         Title3.setForeground(new java.awt.Color(255, 255, 255));
         Title3.setText("Repeat.");
-        LandingPNLBlack.add(Title3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 130, -1));
+        LandingPNLBlack.add(Title3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 100, 40));
 
-        Title1.setFont(new java.awt.Font("Palatino Linotype", 3, 36)); // NOI18N
+        Title1.setFont(new java.awt.Font("Gabriola", 3, 36)); // NOI18N
         Title1.setForeground(new java.awt.Color(255, 255, 255));
         Title1.setText("Click.");
         LandingPNLBlack.add(Title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, -1));
 
-        Title2.setFont(new java.awt.Font("Palatino Linotype", 3, 36)); // NOI18N
+        Title2.setFont(new java.awt.Font("Gabriola", 3, 36)); // NOI18N
         Title2.setForeground(new java.awt.Color(255, 255, 255));
         Title2.setText("Read.");
         LandingPNLBlack.add(Title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, -1));
-        LandingPNLBlack.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 120, 10));
-        LandingPNLBlack.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 90, 10));
-        LandingPNLBlack.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 90, 10));
+        LandingPNLBlack.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 100, 10));
+        LandingPNLBlack.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 70, 10));
+        LandingPNLBlack.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 70, 10));
 
-        getContentPane().add(LandingPNLBlack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 440));
+        getContentPane().add(LandingPNLBlack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 450));
 
         LandingPNLWhite.setBackground(new java.awt.Color(255, 255, 255));
         LandingPNLWhite.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,7 +111,7 @@ public class landing extends javax.swing.JFrame {
         LandingPNLWhite.add(IntroDesc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 280, 30));
 
         IntroDesc.setText("Manwha Legends is full of exciting stories that make");
-        LandingPNLWhite.add(IntroDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 270, 30));
+        LandingPNLWhite.add(IntroDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 300, 30));
 
         IntroDesc2.setText("you dream, feel, and explore. Open a chapter and");
         LandingPNLWhite.add(IntroDesc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 270, 30));
@@ -151,7 +151,7 @@ public class landing extends javax.swing.JFrame {
         );
 
         LandingPNLWhite.add(SignUpLanding, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 60, 30));
-        LandingPNLWhite.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 320, 20));
+        LandingPNLWhite.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 330, 20));
 
         GetStarted.setBackground(new java.awt.Color(0, 0, 0));
         GetStarted.setFont(new java.awt.Font("Palatino Linotype", 3, 24)); // NOI18N
@@ -187,9 +187,9 @@ public class landing extends javax.swing.JFrame {
 
         LandingPNLWhite.add(RegisterLanding, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 70, 30));
         LandingPNLWhite.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 330, 10));
-        LandingPNLWhite.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 320, 10));
+        LandingPNLWhite.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 330, 10));
 
-        getContentPane().add(LandingPNLWhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 320, 440));
+        getContentPane().add(LandingPNLWhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 330, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

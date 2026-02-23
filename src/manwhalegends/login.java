@@ -25,6 +25,8 @@ public class login extends javax.swing.JFrame {
      */
     char defaultEchoChar;
      
+    
+    //constructor ni wally boldyola
     public login() {
         initComponents();
         
@@ -48,12 +50,13 @@ public class login extends javax.swing.JFrame {
         Separator2 = new javax.swing.JSeparator();
         Separator3 = new javax.swing.JSeparator();
         LoginPasswordIcon = new javax.swing.JLabel();
-        FPassLabel = new javax.swing.JLabel();
         LoginButton = new javax.swing.JButton();
         NewLbl = new javax.swing.JLabel();
         CreateACClbl = new javax.swing.JLabel();
         LoginEmailIcon1 = new javax.swing.JLabel();
         LoginPassword = new javax.swing.JPasswordField();
+        SystemLogo = new javax.swing.JLabel();
+        RememberMe = new javax.swing.JCheckBox();
 
         LogInCheckBox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         LogInCheckBox.setText("Remember me");
@@ -85,11 +88,6 @@ public class login extends javax.swing.JFrame {
         LoginPasswordIcon.setOpaque(true);
         jPanel2.add(LoginPasswordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 171, -1, 30));
 
-        FPassLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        FPassLabel.setText("Forgot Password?");
-        FPassLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(FPassLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 233, -1, 20));
-
         LoginButton.setBackground(new java.awt.Color(255, 255, 255));
         LoginButton.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
         LoginButton.setText("Log In");
@@ -114,7 +112,7 @@ public class login extends javax.swing.JFrame {
         NewLbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         NewLbl.setText("New?");
         NewLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(NewLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 233, -1, 20));
+        jPanel2.add(NewLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, 20));
 
         CreateACClbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         CreateACClbl.setForeground(new java.awt.Color(102, 102, 255));
@@ -125,7 +123,7 @@ public class login extends javax.swing.JFrame {
                 CreateACClblMouseClicked(evt);
             }
         });
-        jPanel2.add(CreateACClbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 233, -1, 20));
+        jPanel2.add(CreateACClbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, 20));
 
         LoginEmailIcon1.setBackground(new java.awt.Color(0, 0, 0));
         LoginEmailIcon1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -140,6 +138,17 @@ public class login extends javax.swing.JFrame {
         });
         jPanel2.add(LoginPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 400, 30));
 
+        SystemLogo.setBackground(new java.awt.Color(0, 0, 0));
+        SystemLogo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        SystemLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/images__2_-removebg-preview.png"))); // NOI18N
+        SystemLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        SystemLogo.setMaximumSize(new java.awt.Dimension(60, 60));
+        SystemLogo.setMinimumSize(new java.awt.Dimension(60, 60));
+        jPanel2.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 70));
+
+        RememberMe.setText("Remember Me");
+        jPanel2.add(RememberMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 510, 330));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 390));
@@ -152,56 +161,56 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_LogInCheckBoxActionPerformed
 
     private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
-    
+    // TODO add your handling code here:
     }//GEN-LAST:event_LoginButtonMouseClicked
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-       String email = LoginEmail.getText().trim();
-    String password = LoginPassword.getText().trim();
+                     String email = LoginEmail.getText().trim();
+                     String password = LoginPassword.getText().trim();
 
-    try {
-        Connection con = DriverManager.getConnection("jdbc:sqlite:AlGUI.db");
-        String sql = "SELECT * FROM tbl_Acc WHERE email=? AND password=? AND status='ACTIVE'";
-        PreparedStatement pst = con.prepareStatement(sql);
+ try {
+                   Connection con = DriverManager.getConnection("jdbc:sqlite:AlGUI.db");
+                   String sql = "SELECT * FROM tbl_Acc WHERE email=? AND password=? AND status='ACTIVE'";
+                   PreparedStatement pst = con.prepareStatement(sql);
         
-        pst.setString(1, email);
-        pst.setString(2, password);
-        
-        ResultSet rs = pst.executeQuery();
-
-        if (rs.next()) {
+                   pst.setString(1, email);
+                   pst.setString(2, password);
+         
+                   ResultSet rs = pst.executeQuery();
+ 
+ if (rs.next()) {
             
-            Session.getInstance().setUserId(rs.getInt("u_id"));
-           Session.getInstance().setUserType(rs.getString("type"));
+                   Session.getInstance().setUserId(rs.getInt("u_id"));
+                   Session.getInstance().setUserType(rs.getString("type"));
 
-            String userType = rs.getString("type");
+                   String userType = rs.getString("type");
 
-            if (userType.equalsIgnoreCase("admin")) {
+ if (userType.equalsIgnoreCase("admin")) {
                 
-                new admindashboard().setVisible(true);
-                this.dispose();
+new admindashboard().setVisible(true);
+this.dispose();
 
-            } else if (userType.equalsIgnoreCase("reader")) {
+} else if (userType.equalsIgnoreCase("reader")) {
 
-                new readerdashboard().setVisible(true);
-                this.dispose();
+new readerdashboard().setVisible(true);
+this.dispose();
             }
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid Email or Password!");
-        }
+ } else {
+                     JOptionPane.showMessageDialog(this, "Invalid Email or Password!");
+            }
 
-        con.close();
+                     con.close();
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
+ } catch (Exception e) {
+                     JOptionPane.showMessageDialog(this, e.getMessage());
     }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void CreateACClblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateACClblMouseClicked
-       register register = new register();
-        register.setVisible(true);
-        this.dispose();
+            register register = new register();
+            register.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_CreateACClblMouseClicked
 
     private void LoginPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginPasswordActionPerformed
@@ -249,7 +258,6 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CreateACClbl;
-    private javax.swing.JLabel FPassLabel;
     private javax.swing.JCheckBox LogInCheckBox;
     private javax.swing.JButton LoginButton;
     private javax.swing.JTextField LoginEmail;
@@ -257,9 +265,11 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPasswordField LoginPassword;
     private javax.swing.JLabel LoginPasswordIcon;
     private javax.swing.JLabel NewLbl;
+    private javax.swing.JCheckBox RememberMe;
     private javax.swing.JSeparator Separator2;
     private javax.swing.JSeparator Separator3;
     private javax.swing.JLabel SignUpHeader;
+    private javax.swing.JLabel SystemLogo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

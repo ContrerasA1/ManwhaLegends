@@ -17,6 +17,7 @@ public class register extends javax.swing.JFrame {
     /**
      * Creates new form register
      */
+    //constructor ni 
     public register() {
         initComponents();
     }
@@ -192,14 +193,11 @@ public class register extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
         );
 
         pack();
@@ -218,63 +216,63 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_UsernameActionPerformed
 
     private void SignInBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignInBtnMouseClicked
-       login login = new login();
-       login.setVisible(true);
-       this.dispose();
+            login login = new login();
+            login.setVisible(true);
+ this.dispose();
        
     }//GEN-LAST:event_SignInBtnMouseClicked
 
     private void SignInRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignInRegisterMouseClicked
-        login login = new login();
-        login.setVisible(true);
-        this.dispose();
+             login login = new login();
+             login.setVisible(true);
+ this.dispose();
     }//GEN-LAST:event_SignInRegisterMouseClicked
 
     private void SignUPPnlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUPPnlMouseClicked
-    String username = Username.getText().trim();
-    String email = rEmail.getText().trim();
-    String password = new String(rPassword.getPassword()).trim();
+             String username = Username.getText().trim();
+             String email = rEmail.getText().trim();
+             String password = new String(rPassword.getPassword()).trim();
 
     // mao ni moklaro ug validate
     if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(this,
+             JOptionPane.showMessageDialog(this,
                 "All fields are required!",
                 "Validation Error",
-                JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+             JOptionPane.ERROR_MESSAGE);
+return;
+              }
 
-   config con = new config();
+             config con = new config();
 
 try {
 
-    if (con.emailExists(email)) {
-        JOptionPane.showMessageDialog(this,
+ if (con.emailExists(email)) {
+             JOptionPane.showMessageDialog(this,
                 "Email already exists!",
                 "Registration Error",
-                JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+              JOptionPane.ERROR_MESSAGE);
+return;
+             }
 
-    String insertSql = "INSERT INTO tbl_Acc (name, email, password, type, status) VALUES (?, ?, ?, ?, ?)";
+             String insertSql = "INSERT INTO tbl_Acc (name, email, password, type, status) VALUES (?, ?, ?, ?, ?)";
 
-    con.addRecord(insertSql,
+            con.addRecord(insertSql,
             username,
             email,
             password,
             "reader",
             "ACTIVE");
 
-    JOptionPane.showMessageDialog(this,
+             JOptionPane.showMessageDialog(this,
             "Registered Successfully!",
             "Success",
-            JOptionPane.INFORMATION_MESSAGE);
+             JOptionPane.INFORMATION_MESSAGE);
 
-    new login().setVisible(true);
-    this.dispose();
+ new login().setVisible(true);
+ this.dispose();
 
 } catch (Exception e) {
-    JOptionPane.showMessageDialog(this,
+            JOptionPane.showMessageDialog(this,
             "Error: " + e.getMessage());
 }
 

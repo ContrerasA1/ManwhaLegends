@@ -19,6 +19,8 @@ public class admindashboard extends javax.swing.JFrame {
     /**
      * Creates new form admindashboard
      */
+    
+     //constructor
     public admindashboard() {
         initComponents();
     }
@@ -42,11 +44,14 @@ public class admindashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         SignUpHeader = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        SignUpHeader1 = new javax.swing.JLabel();
+        PersonAdmin = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         SignUpHeader2 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        SignUpHeader3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -109,21 +114,32 @@ public class admindashboard extends javax.swing.JFrame {
         jPanel2.add(SignUpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 470, 20));
 
-        SignUpHeader1.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        SignUpHeader1.setText("Total Manwhas");
-        jPanel2.add(SignUpHeader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 30));
+        PersonAdmin.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        PersonAdmin.setText("Total Active Users: ");
+        jPanel2.add(PersonAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 30));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 470, 20));
 
         SignUpHeader2.setFont(new java.awt.Font("Palatino Linotype", 3, 24)); // NOI18N
         SignUpHeader2.setText("Overview Dashboard");
         jPanel2.add(SignUpHeader2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("-20 manwhas");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/person_book_40dp_1F1F1F_FILL0_wght400_GRAD0_opsz40.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 40, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menu_book_40dp_1F1F1F_FILL0_wght400_GRAD0_opsz40.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 40, 30));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menu_book_40dp_1F1F1F_FILL0_wght400_GRAD0_opsz40.png"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 40, 30));
+
+        jLabel1.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
+        jLabel1.setText("30 Users");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        SignUpHeader3.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        SignUpHeader3.setText("Total Manwhas:");
+        jPanel2.add(SignUpHeader3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 30));
+
+        jLabel2.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
+        jLabel2.setText("20 Manwhas");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 470, 380));
 
@@ -137,26 +153,26 @@ public class admindashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_OverviewAdminActionPerformed
 
     private void UsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsersActionPerformed
-        manageuser manageuser = new manageuser();
-        manageuser.setVisible(true);
-        this.dispose();
+            manageuser manageuser = new manageuser();
+            manageuser.setVisible(true);
+this.dispose();
         
     }//GEN-LAST:event_UsersActionPerformed
 
     private void ManageManwhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageManwhaActionPerformed
-     managemanwha managemanwha = new managemanwha();
-     managemanwha.setVisible(true);
-     this.dispose();
+            managemanwha managemanwha = new managemanwha();
+            managemanwha.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_ManageManwhaActionPerformed
 
     private void LogoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutAdminActionPerformed
-        if (JOptionPane.showConfirmDialog(this,
-        "Are you sure you want to logout?",
-        "Confirm Logout",
-        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+if (JOptionPane.showConfirmDialog(this,
+         "Are you sure you want to logout?",
+         "Confirm Logout",
+         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-    new login().setVisible(true);
-    this.dispose();
+new login().setVisible(true);
+this.dispose();
 }
         
     }//GEN-LAST:event_LogoutAdminActionPerformed
@@ -201,13 +217,16 @@ public class admindashboard extends javax.swing.JFrame {
     private javax.swing.JButton ManageManwha;
     private javax.swing.JPanel MenuPNL;
     private javax.swing.JButton OverviewAdmin;
+    private javax.swing.JLabel PersonAdmin;
     private javax.swing.JLabel SignUpHeader;
-    private javax.swing.JLabel SignUpHeader1;
     private javax.swing.JLabel SignUpHeader2;
+    private javax.swing.JLabel SignUpHeader3;
     private javax.swing.JLabel SystemLogo;
     private javax.swing.JButton Users;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
