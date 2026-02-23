@@ -45,7 +45,6 @@ public class admindashboard extends javax.swing.JFrame {
         SignUpHeader1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         SignUpHeader2 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,10 +117,6 @@ public class admindashboard extends javax.swing.JFrame {
         SignUpHeader2.setText("Overview Dashboard");
         jPanel2.add(SignUpHeader2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("-20 manwhas");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
-
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menu_book_40dp_1F1F1F_FILL0_wght400_GRAD0_opsz40.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 40, 30));
 
@@ -130,6 +125,7 @@ public class admindashboard extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 420));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void OverviewAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverviewAdminActionPerformed
@@ -206,7 +202,6 @@ public class admindashboard extends javax.swing.JFrame {
     private javax.swing.JLabel SignUpHeader2;
     private javax.swing.JLabel SystemLogo;
     private javax.swing.JButton Users;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

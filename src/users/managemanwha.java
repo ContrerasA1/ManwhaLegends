@@ -109,7 +109,7 @@ config cfg = new config();
                 OverviewAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(OverviewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        MenuPNL.add(OverviewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 40));
 
         Users.setText("Users");
         Users.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -118,7 +118,7 @@ config cfg = new config();
                 UsersActionPerformed(evt);
             }
         });
-        MenuPNL.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
+        MenuPNL.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 80, 40));
 
         ManageManwha.setText("Manwha");
         ManageManwha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -127,7 +127,7 @@ config cfg = new config();
                 ManageManwhaActionPerformed(evt);
             }
         });
-        MenuPNL.add(ManageManwha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
+        MenuPNL.add(ManageManwha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 80, 40));
 
         LogoutAdmin.setText("Logout");
         LogoutAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -136,7 +136,7 @@ config cfg = new config();
                 LogoutAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 303, 70, 30));
 
         jPanel1.add(MenuPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 110, 340));
 
@@ -233,6 +233,7 @@ config cfg = new config();
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 450));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void OverviewAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverviewAdminActionPerformed
@@ -371,8 +372,6 @@ Add.setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
-    private javax.swing.JButton AddtoF;
-    private javax.swing.JButton AddtoF1;
     private javax.swing.JButton Delete;
     private javax.swing.JButton LogoutAdmin;
     private javax.swing.JButton ManageManwha;

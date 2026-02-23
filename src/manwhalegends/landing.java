@@ -192,6 +192,7 @@ public class landing extends javax.swing.JFrame {
         getContentPane().add(LandingPNLWhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 320, 440));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignUpLandingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpLandingMouseClicked

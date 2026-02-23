@@ -136,6 +136,7 @@ config cfg = new config();
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 380));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStatusActionPerformed

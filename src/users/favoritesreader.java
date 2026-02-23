@@ -69,7 +69,7 @@ public class favoritesreader extends javax.swing.JFrame {
                 ReaderProfileActionPerformed(evt);
             }
         });
-        ReaderMenu.add(ReaderProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        ReaderMenu.add(ReaderProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 40));
 
         Explore.setText("Explore");
         Explore.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +77,7 @@ public class favoritesreader extends javax.swing.JFrame {
                 ExploreActionPerformed(evt);
             }
         });
-        ReaderMenu.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
+        ReaderMenu.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 90, 40));
 
         Favorites.setText("Favorites");
         Favorites.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class favoritesreader extends javax.swing.JFrame {
                 FavoritesActionPerformed(evt);
             }
         });
-        ReaderMenu.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
+        ReaderMenu.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, 40));
 
         LogoutReader.setText("Logout");
         LogoutReader.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class favoritesreader extends javax.swing.JFrame {
                 LogoutReaderActionPerformed(evt);
             }
         });
-        ReaderMenu.add(LogoutReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 266, -1, -1));
+        ReaderMenu.add(LogoutReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 90, 30));
 
         jPanel1.add(ReaderMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 340));
 
@@ -151,6 +151,7 @@ public class favoritesreader extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 410));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ReaderProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReaderProfileActionPerformed

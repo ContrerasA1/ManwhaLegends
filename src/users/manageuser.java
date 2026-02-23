@@ -46,10 +46,16 @@ public class manageuser extends javax.swing.JFrame {
         LogoutAdmin = new javax.swing.JButton();
         SystemLogo = new javax.swing.JLabel();
         MainPNL = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
         ManageUserHeader = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         UsersTable = new javax.swing.JTable();
+        jSeparator2 = new javax.swing.JSeparator();
+        Add = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        RefreshUser = new javax.swing.JButton();
+        AddUser = new javax.swing.JButton();
+        Add3 = new javax.swing.JButton();
+        DeleteUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,7 +71,7 @@ public class manageuser extends javax.swing.JFrame {
                 OverviewAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(OverviewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        MenuPNL.add(OverviewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 40));
 
         Users.setText("Users");
         Users.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +79,7 @@ public class manageuser extends javax.swing.JFrame {
                 UsersActionPerformed(evt);
             }
         });
-        MenuPNL.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
+        MenuPNL.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 100, 40));
 
         Manwha.setText("Manwha");
         Manwha.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +87,7 @@ public class manageuser extends javax.swing.JFrame {
                 ManwhaActionPerformed(evt);
             }
         });
-        MenuPNL.add(Manwha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
+        MenuPNL.add(Manwha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 40));
 
         LogoutAdmin.setText("Logout");
         LogoutAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -89,9 +95,9 @@ public class manageuser extends javax.swing.JFrame {
                 LogoutAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 80, 30));
 
-        BodyPanel.add(MenuPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 120, 330));
+        BodyPanel.add(MenuPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 390));
 
         SystemLogo.setBackground(new java.awt.Color(0, 0, 0));
         SystemLogo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -101,11 +107,10 @@ public class manageuser extends javax.swing.JFrame {
         BodyPanel.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
 
         MainPNL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        MainPNL.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 470, 20));
 
         ManageUserHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 24)); // NOI18N
         ManageUserHeader.setText("Manage Users");
-        MainPNL.add(ManageUserHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+        MainPNL.add(ManageUserHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
         UsersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,13 +122,56 @@ public class manageuser extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(UsersTable);
 
-        MainPNL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 460, 320));
+        MainPNL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 550, 350));
+        MainPNL.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 550, 20));
 
-        BodyPanel.add(MainPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 460, 370));
+        Add.setText("Add");
+        Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddActionPerformed(evt);
+            }
+        });
+        MainPNL.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
-        getContentPane().add(BodyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 410));
+        BodyPanel.add(MainPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 550, 390));
+        BodyPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 760, 20));
+
+        RefreshUser.setText("Refresh");
+        RefreshUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshUserActionPerformed(evt);
+            }
+        });
+        BodyPanel.add(RefreshUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 90, 30));
+
+        AddUser.setText("Add");
+        AddUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddUserActionPerformed(evt);
+            }
+        });
+        BodyPanel.add(AddUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 80, 30));
+
+        Add3.setText("Update");
+        Add3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Add3ActionPerformed(evt);
+            }
+        });
+        BodyPanel.add(Add3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 80, 30));
+
+        DeleteUser.setText("Delete");
+        DeleteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteUserActionPerformed(evt);
+            }
+        });
+        BodyPanel.add(DeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 80, 30));
+
+        getContentPane().add(BodyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 480));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void OverviewAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverviewAdminActionPerformed
@@ -152,6 +200,28 @@ this.dispose();
     this.dispose();
            }
     }//GEN-LAST:event_LogoutAdminActionPerformed
+
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+
+       
+    }//GEN-LAST:event_AddActionPerformed
+
+    private void RefreshUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshUserActionPerformed
+
+     
+    }//GEN-LAST:event_RefreshUserActionPerformed
+
+    private void AddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddUserActionPerformed
+
+    private void Add3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Add3ActionPerformed
+
+    private void DeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,17 +259,23 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Add;
+    private javax.swing.JButton Add3;
+    private javax.swing.JButton AddUser;
     private javax.swing.JPanel BodyPanel;
+    private javax.swing.JButton DeleteUser;
     private javax.swing.JButton LogoutAdmin;
     private javax.swing.JPanel MainPNL;
     private javax.swing.JLabel ManageUserHeader;
     private javax.swing.JButton Manwha;
     private javax.swing.JPanel MenuPNL;
     private javax.swing.JButton OverviewAdmin;
+    private javax.swing.JButton RefreshUser;
     private javax.swing.JLabel SystemLogo;
     private javax.swing.JButton Users;
     private javax.swing.JTable UsersTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
