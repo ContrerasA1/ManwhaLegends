@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package users;
 
 import config.Session;
@@ -11,25 +6,22 @@ import javax.swing.JOptionPane;
 import manwhalegends.login;
 import userdashboard.readerdashboard;
 
-/**
- *
- * @author Resty
- */
 public class favoritesreader extends javax.swing.JFrame {
 
-    /**
-     * Creates new form favoritesreader
-     */
-    public favoritesreader() {
+    
+      //Creates new form favoritesreader
+     
+public favoritesreader() {
         initComponents();
         loadFavorites();
-    }
+        getRootPane().setDefaultButton(LogoutReader);
+                                                                                                                                }
     
-    private void loadFavorites() {
-    config cfg = new config();
-    int userId = Session.getInstance().getUserId();
-    cfg.getUserFavorites(userId, favoritesTable);
-}
+private void loadFavorites() {
+        config cfg = new config();
+int userId = Session.getInstance().getUserId();
+        cfg.getUserFavorites(userId, favoritesTable);
+                                                                                                                                                      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,12 +33,6 @@ public class favoritesreader extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        ReaderMenu = new javax.swing.JPanel();
-        ReaderProfile = new javax.swing.JButton();
-        Explore = new javax.swing.JButton();
-        Favorites = new javax.swing.JButton();
-        LogoutReader = new javax.swing.JButton();
-        SystemLogo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         FavoritesHeader = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -54,6 +40,12 @@ public class favoritesreader extends javax.swing.JFrame {
         favoritesTable = new javax.swing.JTable();
         Favoritesbtn = new javax.swing.JButton();
         Backbtn = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jPanel3 = new javax.swing.JPanel();
+        ReaderProfile = new javax.swing.JButton();
+        Explore = new javax.swing.JButton();
+        Favorites = new javax.swing.JButton();
+        LogoutReader = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,58 +53,19 @@ public class favoritesreader extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ReaderMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ReaderProfile.setText("Profile");
-        ReaderProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReaderProfileActionPerformed(evt);
-            }
-        });
-        ReaderMenu.add(ReaderProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        Explore.setText("Explore");
-        Explore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExploreActionPerformed(evt);
-            }
-        });
-        ReaderMenu.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
-
-        Favorites.setText("Favorites");
-        Favorites.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FavoritesActionPerformed(evt);
-            }
-        });
-        ReaderMenu.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
-
-        LogoutReader.setText("Logout");
-        LogoutReader.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutReaderActionPerformed(evt);
-            }
-        });
-        ReaderMenu.add(LogoutReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 266, -1, -1));
-
-        jPanel1.add(ReaderMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 340));
-
-        SystemLogo.setBackground(new java.awt.Color(0, 0, 0));
-        SystemLogo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        SystemLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/images__2_-removebg-preview.png"))); // NOI18N
-        SystemLogo.setMaximumSize(new java.awt.Dimension(60, 60));
-        SystemLogo.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel1.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 90, 60));
-
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FavoritesHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 36)); // NOI18N
         FavoritesHeader.setText("Favorites");
-        jPanel2.add(FavoritesHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
+        jPanel2.add(FavoritesHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
 
         jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 0));
 
+        favoritesTable.setBackground(new java.awt.Color(0, 0, 0));
+        favoritesTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        favoritesTable.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        favoritesTable.setForeground(new java.awt.Color(255, 255, 255));
         favoritesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -128,7 +81,7 @@ public class favoritesreader extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(favoritesTable);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 500, 300));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 600, 320));
 
         Favoritesbtn.setText("Remove from favorites");
         Favoritesbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +89,7 @@ public class favoritesreader extends javax.swing.JFrame {
                 FavoritesbtnActionPerformed(evt);
             }
         });
-        jPanel2.add(Favoritesbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        jPanel2.add(Favoritesbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 160, 30));
 
         Backbtn.setText("Refresh");
         Backbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -144,25 +97,63 @@ public class favoritesreader extends javax.swing.JFrame {
                 BackbtnActionPerformed(evt);
             }
         });
-        jPanel2.add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, -1, -1));
+        jPanel2.add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 80, 30));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 10));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 500, 380));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 600, 410));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 410));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ReaderProfile.setText("Profile");
+        ReaderProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReaderProfileActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ReaderProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 40));
+
+        Explore.setText("Explore");
+        Explore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExploreActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 90, 40));
+
+        Favorites.setText("Favorites");
+        Favorites.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FavoritesActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 90, 40));
+
+        LogoutReader.setText("Logout");
+        LogoutReader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutReaderActionPerformed(evt);
+            }
+        });
+        jPanel3.add(LogoutReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 90, 40));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 600, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 500));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ReaderProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReaderProfileActionPerformed
         readerdashboard readerdashboard = new readerdashboard();
         readerdashboard.setVisible(true);
-        this.dispose();
+this.dispose();
     }//GEN-LAST:event_ReaderProfileActionPerformed
 
     private void ExploreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExploreActionPerformed
-    readerservice readerservice = new readerservice();
-    readerservice.setVisible(true);
-    this.dispose();
+         readerservice readerservice = new readerservice();
+         readerservice.setVisible(true);
+ this.dispose();
     }//GEN-LAST:event_ExploreActionPerformed
 
     private void FavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FavoritesActionPerformed
@@ -170,50 +161,50 @@ public class favoritesreader extends javax.swing.JFrame {
     }//GEN-LAST:event_FavoritesActionPerformed
 
     private void LogoutReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutReaderActionPerformed
-        if (JOptionPane.showConfirmDialog(this,
+ if (JOptionPane.showConfirmDialog(this,
             "Are you sure you want to logout?",
             "Confirm Logout",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-        new login().setVisible(true);
-        this.dispose();
-        }
+new login().setVisible(true);
+this.dispose();
+                                                                                                                                                          }
     }//GEN-LAST:event_LogoutReaderActionPerformed
 
     private void BackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbtnActionPerformed
-     loadFavorites();
+                 loadFavorites();
     }//GEN-LAST:event_BackbtnActionPerformed
 
     private void FavoritesbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FavoritesbtnActionPerformed
      
-    int selectedRow = favoritesTable.getSelectedRow();
+int selectedRow = favoritesTable.getSelectedRow();
 
-    if (selectedRow == -1) {
+if (selectedRow == -1) {
         JOptionPane.showMessageDialog(this, "Select a manwha first!");
-        return;
-    }
+return;
+                                                                                                                                                          }
 
-    int confirm = JOptionPane.showConfirmDialog(
+int confirm = JOptionPane.showConfirmDialog(
             this,
             "Remove from favorites?",
             "Confirm",
             JOptionPane.YES_NO_OPTION
     );
 
-    if (confirm == JOptionPane.YES_OPTION) {
+if (confirm == JOptionPane.YES_OPTION) {
 
-        int manwhaId = Integer.parseInt(
-                favoritesTable.getValueAt(selectedRow, 0).toString()
+int manwhaId = Integer.parseInt(
+            favoritesTable.getValueAt(selectedRow, 0).toString()
         );
 
-        int userId = Session.getInstance().getUserId();
+int userId = Session.getInstance().getUserId();
 
-        config cfg = new config();
-        cfg.removeFromFavorites(userId, manwhaId);
+          config cfg = new config();
+          cfg.removeFromFavorites(userId, manwhaId);
 
-        JOptionPane.showMessageDialog(this, "Removed Successfully!");
-        loadFavorites(); // refresh table
-    }
+          JOptionPane.showMessageDialog(this, "Removed Successfully!");
+          loadFavorites(); // refresh table
+                                                                                                                                                          }
 
     }//GEN-LAST:event_FavoritesbtnActionPerformed
 
@@ -259,13 +250,13 @@ public class favoritesreader extends javax.swing.JFrame {
     private javax.swing.JLabel FavoritesHeader;
     private javax.swing.JButton Favoritesbtn;
     private javax.swing.JButton LogoutReader;
-    private javax.swing.JPanel ReaderMenu;
     private javax.swing.JButton ReaderProfile;
-    private javax.swing.JLabel SystemLogo;
     private javax.swing.JTable favoritesTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

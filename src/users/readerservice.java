@@ -25,14 +25,16 @@ public class readerservice extends javax.swing.JFrame {
     /**
      * Creates new form readerservice
      */
-    public readerservice() {
-        initComponents();
-          loadManwha();
+public readerservice() {
+             initComponents();
+             loadManwha();
+          
+             getRootPane().setDefaultButton(LogoutReader);
     }
     
-    private void loadManwha() {
-    config cfg= new config();
-    cfg.getAllManwha(manwhaTable);
+private void loadManwha() {
+             config cfg= new config();
+             cfg.getAllManwha(manwhaTable);
 }
 
     /**
@@ -46,81 +48,41 @@ public class readerservice extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
-        jPanel1 = new javax.swing.JPanel();
-        ReaderMenu = new javax.swing.JPanel();
-        ReaderProfile = new javax.swing.JButton();
-        Explore = new javax.swing.JButton();
-        Favorites = new javax.swing.JButton();
-        LogoutReader = new javax.swing.JButton();
-        SystemLogo = new javax.swing.JLabel();
+        backgroundpanel = new javax.swing.JPanel();
         mainpnl = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         ReaderServiceHeader = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        ManwhaListTable = new javax.swing.JScrollPane();
         manwhaTable = new javax.swing.JTable();
         AddtoF = new javax.swing.JButton();
         Searchbar = new javax.swing.JTextField();
         Searchbtn = new javax.swing.JButton();
+        MenuPnl = new javax.swing.JPanel();
+        Explore = new javax.swing.JButton();
+        ReaderProfile = new javax.swing.JButton();
+        Favorites = new javax.swing.JButton();
+        LogoutReader = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ReaderMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ReaderProfile.setText("Profile");
-        ReaderProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReaderProfileActionPerformed(evt);
-            }
-        });
-        ReaderMenu.add(ReaderProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        Explore.setText("Explore");
-        Explore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExploreActionPerformed(evt);
-            }
-        });
-        ReaderMenu.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
-
-        Favorites.setText("Favorites");
-        Favorites.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FavoritesActionPerformed(evt);
-            }
-        });
-        ReaderMenu.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
-
-        LogoutReader.setText("Logout");
-        LogoutReader.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutReaderActionPerformed(evt);
-            }
-        });
-        ReaderMenu.add(LogoutReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 266, -1, -1));
-
-        jPanel1.add(ReaderMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 360));
-
-        SystemLogo.setBackground(new java.awt.Color(0, 0, 0));
-        SystemLogo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        SystemLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/images__2_-removebg-preview.png"))); // NOI18N
-        SystemLogo.setMaximumSize(new java.awt.Dimension(60, 60));
-        SystemLogo.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel1.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 90, 70));
+        backgroundpanel.setBackground(new java.awt.Color(0, 0, 0));
+        backgroundpanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backgroundpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mainpnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        mainpnl.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 470, 10));
+        mainpnl.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 630, 10));
 
         ReaderServiceHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 24)); // NOI18N
         ReaderServiceHeader.setText("Discover Manwhas");
-        mainpnl.add(ReaderServiceHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        mainpnl.add(ReaderServiceHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, -1));
 
+        manwhaTable.setBackground(new java.awt.Color(0, 0, 0));
+        manwhaTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        manwhaTable.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        manwhaTable.setForeground(new java.awt.Color(255, 255, 255));
         manwhaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -132,9 +94,9 @@ public class readerservice extends javax.swing.JFrame {
                 "Title ", "Genre", "Author", "Status"
             }
         ));
-        jScrollPane2.setViewportView(manwhaTable);
+        ManwhaListTable.setViewportView(manwhaTable);
 
-        mainpnl.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 470, 310));
+        mainpnl.add(ManwhaListTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 630, 320));
 
         AddtoF.setText("Add to Favorites");
         AddtoF.addActionListener(new java.awt.event.ActionListener() {
@@ -142,14 +104,14 @@ public class readerservice extends javax.swing.JFrame {
                 AddtoFActionPerformed(evt);
             }
         });
-        mainpnl.add(AddtoF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        mainpnl.add(AddtoF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 120, 30));
 
         Searchbar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchbarActionPerformed(evt);
             }
         });
-        mainpnl.add(Searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 110, -1));
+        mainpnl.add(Searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 120, 30));
 
         Searchbtn.setBackground(new java.awt.Color(255, 255, 255));
         Searchbtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,13 +121,50 @@ public class readerservice extends javax.swing.JFrame {
                 SearchbtnActionPerformed(evt);
             }
         });
-        mainpnl.add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 20, 20));
+        mainpnl.add(Searchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 20, 30));
 
-        jPanel1.add(mainpnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 470, 400));
+        backgroundpanel.add(mainpnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 630, 400));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 440));
+        MenuPnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Explore.setText("Explore");
+        Explore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExploreActionPerformed(evt);
+            }
+        });
+        MenuPnl.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 90, 40));
+
+        ReaderProfile.setText("Profile");
+        ReaderProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReaderProfileActionPerformed(evt);
+            }
+        });
+        MenuPnl.add(ReaderProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 40));
+
+        Favorites.setText("Favorites");
+        Favorites.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FavoritesActionPerformed(evt);
+            }
+        });
+        MenuPnl.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 90, 40));
+
+        LogoutReader.setText("Logout");
+        LogoutReader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutReaderActionPerformed(evt);
+            }
+        });
+        MenuPnl.add(LogoutReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 80, 40));
+
+        backgroundpanel.add(MenuPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 630, 60));
+
+        getContentPane().add(backgroundpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 500));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ReaderProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReaderProfileActionPerformed
@@ -179,8 +178,8 @@ public class readerservice extends javax.swing.JFrame {
     }//GEN-LAST:event_ExploreActionPerformed
 
     private void FavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FavoritesActionPerformed
-favoritesreader favoritesreader = new favoritesreader();
-favoritesreader.setVisible(true);
+        favoritesreader favoritesreader = new favoritesreader();
+        favoritesreader.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_FavoritesActionPerformed
 
@@ -189,25 +188,25 @@ this.dispose();
             "Are you sure you want to logout?",
             "Confirm Logout",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
-        new login().setVisible(true);
-        this.dispose();
-        }
+ 
+ new login().setVisible(true);
+ this.dispose();
+                                                                                                                             }
     }//GEN-LAST:event_LogoutReaderActionPerformed
 
     private void AddtoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoFActionPerformed
-       int selectedRow = manwhaTable.getSelectedRow();
+               int selectedRow = manwhaTable.getSelectedRow();
 
-    if (selectedRow == -1) {
+ if (selectedRow == -1) {
         JOptionPane.showMessageDialog(this, "Select a manwha first!");
         return;
-    }
+                                                                                                                              }
 
-    int manwhaId = Integer.parseInt(manwhaTable.getValueAt(selectedRow, 0).toString());
-    int userId = Session.getInstance().getUserId();
+int manwhaId = Integer.parseInt(manwhaTable.getValueAt(selectedRow, 0).toString());
+int userId = Session.getInstance().getUserId();
 
-    config cfg = new config();
-    cfg.addToFavorites(userId, manwhaId);
+       config cfg = new config();
+       cfg.addToFavorites(userId, manwhaId);
 
     JOptionPane.showMessageDialog(this, "Added to Favorites!");
     
@@ -216,24 +215,24 @@ this.dispose();
 
     private void SearchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbtnActionPerformed
          String keyword = Searchbtn.getText().trim();
-    config cfg = new config();
+         config cfg = new config();
 
-    if (!keyword.isEmpty()) {
+ if (!keyword.isEmpty()) {
         cfg.searchManwha(keyword, manwhaTable);
     } else {
-        loadManwha();
-    }
+         loadManwha();
+                                                                                                                                             }
     }//GEN-LAST:event_SearchbtnActionPerformed
 
     private void SearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbarActionPerformed
            String keyword = Searchbar.getText().trim();
-    config cfg = new config();
+           config cfg = new config();
 
     if (!keyword.isEmpty()) {
-        cfg.searchManwha(keyword, manwhaTable);
+          cfg.searchManwha(keyword, manwhaTable);
     } else {
-        loadManwha();
-    }
+          loadManwha();
+                                                                                                                                              }
     }//GEN-LAST:event_SearchbarActionPerformed
 
     /**
@@ -276,15 +275,14 @@ this.dispose();
     private javax.swing.JButton Explore;
     private javax.swing.JButton Favorites;
     private javax.swing.JButton LogoutReader;
-    private javax.swing.JPanel ReaderMenu;
+    private javax.swing.JScrollPane ManwhaListTable;
+    private javax.swing.JPanel MenuPnl;
     private javax.swing.JButton ReaderProfile;
     private javax.swing.JLabel ReaderServiceHeader;
     private javax.swing.JTextField Searchbar;
     private javax.swing.JButton Searchbtn;
-    private javax.swing.JLabel SystemLogo;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel backgroundpanel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JPanel mainpnl;

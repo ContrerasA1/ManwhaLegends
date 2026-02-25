@@ -10,10 +10,14 @@ package config;
  * @author Resty
  */
 public class Session {
+  
     private static Session instance;
 
     private int userId;
+    private String name;
+    private String email;
     private String userType;
+    private String status;
     private boolean loggedIn = false;
 
     private Session() {}
@@ -25,8 +29,12 @@ public class Session {
         return instance;
     }
 
-    public void setUserId(int userId) {
+    public void setSession(int userId, String name, String email, String userType, String status) {
         this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.userType = userType;
+        this.status = status;
         this.loggedIn = true;
     }
 
@@ -34,12 +42,20 @@ public class Session {
         return userId;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getUserType() {
         return userType;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public boolean isLoggedIn() {
@@ -48,8 +64,10 @@ public class Session {
 
     public void clearSession() {
         userId = 0;
+        name = null;
+        email = null;
         userType = null;
+        status = null;
         loggedIn = false;
     }
-
 }

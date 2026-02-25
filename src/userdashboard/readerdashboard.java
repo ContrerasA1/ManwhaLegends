@@ -1,62 +1,83 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package userdashboard;
 
+import CRUDReader.editprofile;
 import config.Session;
 import config.config;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import manwhalegends.login;
 import users.favoritesreader;
 import users.readerservice;
 
-/**
- *
- * @author Resty
- */
+
 public class readerdashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form readerdashboard
-     */
+    // Creates new form readerdashboard
+     
     //constructor ni wally boldyola
     public readerdashboard() {
         initComponents();
-        loadReaderProfile();
-    }
+        getRootPane().setDefaultButton(LogoutReader);
+        
+         Session session = Session.getInstance();
+
+if (!session.isLoggedIn()) {
+          JOptionPane.showMessageDialog(this,
+           "You must login first!");
+new login().setVisible(true);
+this.dispose();
+return;
+                                                                                                                                                                     }
+loadReaderProfile();
+                                                                                                                                                                         }
+    
+    //refresh btn constructor=                                              
+private void refreshProfile() {
+    loadReaderProfile();
+                                                                                                                                                                     }
     
     //method para modisplay and users profile
 public void loadReaderProfile() {
 
-    int userId = Session.getInstance().getUserId();
-    String type = Session.getInstance().getUserType();
+int userId = Session.getInstance().getUserId();
+      String type = Session.getInstance().getUserType();
 
-    if (!type.equalsIgnoreCase("reader")) {
+if (!type.equalsIgnoreCase("reader")) {
         javax.swing.JOptionPane.showMessageDialog(this, "Access Denied!");
-        new login().setVisible(true);
-        this.dispose();
-        return;
-    }
+new login().setVisible(true);
+this.dispose();
+return;
+                                                                                                                                                                         }
 
-    try {
+try {
         config con = new config();
         java.sql.Connection cn = con.connectDB();
         java.sql.PreparedStatement pst = cn.prepareStatement(
-            "SELECT u_id, name, email, type, status FROM tbl_Acc WHERE u_id = ?"
-        );
+            "SELECT u_id, name, email, type, status, image FROM tbl_Acc WHERE u_id = ?"
+                                                                                                                                                                             );
 
         pst.setInt(1, userId);
         java.sql.ResultSet rs = pst.executeQuery();
 
-        if (rs.next()) {
+if (rs.next()) {
             Rid.setText(String.valueOf(rs.getInt("u_id")));
             Rusername.setText(rs.getString("name"));
             Remail.setText(rs.getString("email"));
             Rtype.setText(rs.getString("type"));
             Rstatus.setText(rs.getString("status"));
-        }
+            
+             String image = rs.getString("image");
+            
+           
+
+if (image!= null && !image.isEmpty()) {
+    ImageIcon icon = new ImageIcon(image);
+    Image img = icon.getImage().getScaledInstance(155, 155, Image.SCALE_SMOOTH);
+                ProfilePic.setIcon(new ImageIcon(img));
+                                                                                                                                                                                 }
+        
+                                                                                                                                                                             }
 
         rs.close();
         pst.close();
@@ -65,7 +86,8 @@ public void loadReaderProfile() {
     } catch (Exception e) {
         e.printStackTrace();
     }
-}
+                                                                                                                                                                     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,54 +97,132 @@ public void loadReaderProfile() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        MenuPNL = new javax.swing.JPanel();
-        ProfileReader = new javax.swing.JButton();
-        Explore = new javax.swing.JButton();
-        Favorites = new javax.swing.JButton();
-        LogoutAdmin = new javax.swing.JButton();
-        SystemLogo = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        SignUpHeader = new javax.swing.JLabel();
+        BackgroundPanel = new javax.swing.JPanel();
+        readerdashboardPanel = new javax.swing.JPanel();
+        WelcomeReaderHeader = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        SignUpHeader2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        UsersInfoPanel = new javax.swing.JPanel();
+        Status = new javax.swing.JLabel();
         Rstatus = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        Username = new javax.swing.JLabel();
+        Type = new javax.swing.JLabel();
+        Email = new javax.swing.JLabel();
+        UID = new javax.swing.JLabel();
         Rid = new javax.swing.JLabel();
         Rusername = new javax.swing.JLabel();
         Remail = new javax.swing.JLabel();
         Rtype = new javax.swing.JLabel();
+        SystemLogo = new javax.swing.JLabel();
+        ProfilePic = new javax.swing.JLabel();
+        EditProfile = new javax.swing.JButton();
+        refreshbtn = new javax.swing.JLabel();
+        MenuPanel = new javax.swing.JPanel();
+        LogoutReader = new javax.swing.JButton();
+        Favorites = new javax.swing.JButton();
+        ProfileReader = new javax.swing.JButton();
+        Explore = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        BackgroundPanel.setBackground(new java.awt.Color(0, 0, 0));
+        BackgroundPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        MenuPNL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        readerdashboardPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ProfileReader.setText("Profile");
-        ProfileReader.addActionListener(new java.awt.event.ActionListener() {
+        WelcomeReaderHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 40)); // NOI18N
+        WelcomeReaderHeader.setText("Welcome, Reader!");
+        readerdashboardPanel.add(WelcomeReaderHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        readerdashboardPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 720, 10));
+        readerdashboardPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 690, 10));
+
+        UsersInfoPanel.setBackground(new java.awt.Color(0, 0, 0));
+        UsersInfoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        UsersInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Status.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        Status.setForeground(new java.awt.Color(255, 255, 255));
+        Status.setText("Status:");
+        UsersInfoPanel.add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 40));
+
+        Rstatus.setFont(new java.awt.Font("Palatino Linotype", 1, 18)); // NOI18N
+        Rstatus.setForeground(new java.awt.Color(255, 255, 255));
+        UsersInfoPanel.add(Rstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 220, 20));
+
+        Username.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        Username.setForeground(new java.awt.Color(255, 255, 255));
+        Username.setText("Username:");
+        UsersInfoPanel.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 30));
+
+        Type.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        Type.setForeground(new java.awt.Color(255, 255, 255));
+        Type.setText("Type:");
+        UsersInfoPanel.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 40));
+
+        Email.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        Email.setForeground(new java.awt.Color(255, 255, 255));
+        Email.setText("Email:");
+        UsersInfoPanel.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 40));
+
+        UID.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
+        UID.setForeground(new java.awt.Color(255, 255, 255));
+        UID.setText("UserID:");
+        UsersInfoPanel.add(UID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 40));
+
+        Rid.setFont(new java.awt.Font("Palatino Linotype", 1, 18)); // NOI18N
+        Rid.setForeground(new java.awt.Color(255, 255, 255));
+        UsersInfoPanel.add(Rid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 90, 20));
+
+        Rusername.setFont(new java.awt.Font("Palatino Linotype", 1, 18)); // NOI18N
+        Rusername.setForeground(new java.awt.Color(255, 255, 255));
+        UsersInfoPanel.add(Rusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 320, 30));
+
+        Remail.setFont(new java.awt.Font("Palatino Linotype", 1, 18)); // NOI18N
+        Remail.setForeground(new java.awt.Color(255, 255, 255));
+        UsersInfoPanel.add(Remail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 290, 20));
+
+        Rtype.setFont(new java.awt.Font("Palatino Linotype", 1, 18)); // NOI18N
+        Rtype.setForeground(new java.awt.Color(255, 255, 255));
+        UsersInfoPanel.add(Rtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 170, 20));
+
+        SystemLogo.setBackground(new java.awt.Color(0, 0, 0));
+        SystemLogo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        SystemLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/images__2_-removebg-preview.png"))); // NOI18N
+        SystemLogo.setMaximumSize(new java.awt.Dimension(60, 60));
+        SystemLogo.setMinimumSize(new java.awt.Dimension(60, 60));
+        UsersInfoPanel.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 90, -1));
+
+        readerdashboardPanel.add(UsersInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 650, 240));
+        readerdashboardPanel.add(ProfilePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 210, 160));
+
+        EditProfile.setText("Edit Profile");
+        EditProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProfileReaderActionPerformed(evt);
+                EditProfileActionPerformed(evt);
             }
         });
-        MenuPNL.add(ProfileReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        readerdashboardPanel.add(EditProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 110, 40));
 
-        Explore.setText("Explore");
-        Explore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExploreActionPerformed(evt);
+        refreshbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refresh_50dp_000000_FILL0_wght400_GRAD0_opsz48.png"))); // NOI18N
+        refreshbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refreshbtnMouseClicked(evt);
             }
         });
-        MenuPNL.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
+        readerdashboardPanel.add(refreshbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, -1, 40));
+
+        BackgroundPanel.add(readerdashboardPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 690, 470));
+
+        MenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LogoutReader.setText("Logout");
+        LogoutReader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutReaderActionPerformed(evt);
+            }
+        });
+        MenuPanel.add(LogoutReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 70, 40));
 
         Favorites.setText("Favorites");
         Favorites.addActionListener(new java.awt.event.ActionListener() {
@@ -130,86 +230,30 @@ public void loadReaderProfile() {
                 FavoritesActionPerformed(evt);
             }
         });
-        MenuPNL.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
+        MenuPanel.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 90, 40));
 
-        LogoutAdmin.setText("Logout");
-        LogoutAdmin.addActionListener(new java.awt.event.ActionListener() {
+        ProfileReader.setText("Profile");
+        ProfileReader.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutAdminActionPerformed(evt);
+                ProfileReaderActionPerformed(evt);
             }
         });
-        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 266, -1, -1));
+        MenuPanel.add(ProfileReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 40));
 
-        jPanel1.add(MenuPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 350));
+        Explore.setText("Explore");
+        Explore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExploreActionPerformed(evt);
+            }
+        });
+        MenuPanel.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 90, 40));
 
-        SystemLogo.setBackground(new java.awt.Color(0, 0, 0));
-        SystemLogo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        SystemLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/images__2_-removebg-preview.png"))); // NOI18N
-        SystemLogo.setMaximumSize(new java.awt.Dimension(60, 60));
-        SystemLogo.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel1.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
+        BackgroundPanel.add(MenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 690, 60));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        SignUpHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 40)); // NOI18N
-        SignUpHeader.setText("Welcome, Reader!");
-        jPanel2.add(SignUpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 470, 20));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 470, 20));
-
-        SignUpHeader2.setFont(new java.awt.Font("Palatino Linotype", 3, 24)); // NOI18N
-        SignUpHeader2.setText("Profile");
-        jPanel2.add(SignUpHeader2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/person_book_40dp_1F1F1F_FILL0_wght400_GRAD0_opsz40.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 40, 30));
-
-        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jLabel1.setText("Status:");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        Rstatus.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jPanel3.add(Rstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 110, 30));
-
-        jLabel4.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jLabel4.setText("Username:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jLabel5.setText("Type:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jLabel6.setText("Email:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jLabel7.setText("UserID:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        Rid.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jPanel3.add(Rid, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 90, 30));
-
-        Rusername.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jPanel3.add(Rusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 190, 30));
-
-        Remail.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jPanel3.add(Remail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 240, 20));
-
-        Rtype.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        jPanel3.add(Rtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 170, 30));
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 410, 230));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 470, 380));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 420));
+        getContentPane().add(BackgroundPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 560));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProfileReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileReaderActionPerformed
@@ -230,7 +274,7 @@ this.dispose();
  this.dispose();
     }//GEN-LAST:event_FavoritesActionPerformed
 
-    private void LogoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutAdminActionPerformed
+    private void LogoutReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutReaderActionPerformed
    if (JOptionPane.showConfirmDialog(this,
         "Are you sure you want to logout?",
         "Confirm Logout",
@@ -239,7 +283,16 @@ this.dispose();
     new login().setVisible(true);
     this.dispose();        
    }
-    }//GEN-LAST:event_LogoutAdminActionPerformed
+    }//GEN-LAST:event_LogoutReaderActionPerformed
+
+    private void EditProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProfileActionPerformed
+        editprofile ep = new editprofile();
+        ep.setVisible(true);
+    }//GEN-LAST:event_EditProfileActionPerformed
+
+    private void refreshbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshbtnMouseClicked
+     refreshProfile();
+    }//GEN-LAST:event_refreshbtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,29 +330,30 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BackgroundPanel;
+    private javax.swing.JButton EditProfile;
+    private javax.swing.JLabel Email;
     private javax.swing.JButton Explore;
     private javax.swing.JButton Favorites;
-    private javax.swing.JButton LogoutAdmin;
-    private javax.swing.JPanel MenuPNL;
+    private javax.swing.JButton LogoutReader;
+    private javax.swing.JPanel MenuPanel;
+    private javax.swing.JLabel ProfilePic;
     private javax.swing.JButton ProfileReader;
     private javax.swing.JLabel Remail;
     private javax.swing.JLabel Rid;
     private javax.swing.JLabel Rstatus;
     private javax.swing.JLabel Rtype;
     private javax.swing.JLabel Rusername;
-    private javax.swing.JLabel SignUpHeader;
-    private javax.swing.JLabel SignUpHeader2;
+    private javax.swing.JLabel Status;
     private javax.swing.JLabel SystemLogo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel Type;
+    private javax.swing.JLabel UID;
+    private javax.swing.JLabel Username;
+    private javax.swing.JPanel UsersInfoPanel;
+    private javax.swing.JLabel WelcomeReaderHeader;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPanel readerdashboardPanel;
+    private javax.swing.JLabel refreshbtn;
     // End of variables declaration//GEN-END:variables
 }

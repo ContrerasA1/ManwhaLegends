@@ -35,6 +35,8 @@ public class Update extends javax.swing.JFrame {
    
 public Update() {
     initComponents();
+    
+    getRootPane().setDefaultButton(Updatebtn);
 }
     
     /**
@@ -152,6 +154,7 @@ public Update() {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 360));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdStatusActionPerformed

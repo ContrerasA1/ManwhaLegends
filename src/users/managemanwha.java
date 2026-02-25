@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package users;
 
 import CRUDadmin.Add;
@@ -17,26 +12,22 @@ import javax.swing.table.DefaultTableModel;
 import manwhalegends.login;
 import userdashboard.admindashboard;
 
-
-
-/**
- *
- * @author Resty
- */
 public class managemanwha extends javax.swing.JFrame {
-config cfg = new config();
-    /**
-     * Creates new form managemanwha
-     */
-    public managemanwha() {
+                 config cfg = new config();
+    
+    //  Creates new form managemanwha
+
+ public managemanwha() {
         initComponents();
         loadManwha();
         adminManwhaTable.setShowGrid(false);
         adminManwhaTable.setRowHeight(25);
-    }
+        
+        getRootPane().setDefaultButton(LogoutAdmin);
+                                                                                                                                                          }
  
 
-    public void loadManwha() {
+public void loadManwha() {
     try {
         Connection con = DriverManager.getConnection("jdbc:sqlite:AlGUI.db");
         String sql = "SELECT * FROM tbl_manwha";
@@ -54,14 +45,14 @@ config cfg = new config();
                 rs.getString("author"),
                 rs.getString("status")
             });
-        }
+                                                                                                                                                              }
 
         con.close();
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Load Error: " + e.getMessage());
-    }
-}
+                                                                                                                                                          }
+                                                                                                                                                      }
     
 
     /**
@@ -83,16 +74,16 @@ config cfg = new config();
         jPanel2 = new javax.swing.JPanel();
         SignUpHeader = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        refrsh = new javax.swing.JButton();
-        Add = new javax.swing.JButton();
-        Update = new javax.swing.JButton();
-        Delete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         adminManwhaTable = new javax.swing.JTable();
-        btnSearch = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
         Searchb = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        refrsh = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
+        Update = new javax.swing.JButton();
+        Add = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,7 +100,7 @@ config cfg = new config();
                 OverviewAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(OverviewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        MenuPNL.add(OverviewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 40));
 
         Users.setText("Users");
         Users.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -118,7 +109,7 @@ config cfg = new config();
                 UsersActionPerformed(evt);
             }
         });
-        MenuPNL.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, -1));
+        MenuPNL.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 90, 40));
 
         ManageManwha.setText("Manwha");
         ManageManwha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -127,7 +118,7 @@ config cfg = new config();
                 ManageManwhaActionPerformed(evt);
             }
         });
-        MenuPNL.add(ManageManwha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, -1));
+        MenuPNL.add(ManageManwha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 90, 40));
 
         LogoutAdmin.setText("Logout");
         LogoutAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -136,60 +127,31 @@ config cfg = new config();
                 LogoutAdminActionPerformed(evt);
             }
         });
-        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        MenuPNL.add(LogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 90, 30));
 
-        jPanel1.add(MenuPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 110, 340));
+        jPanel1.add(MenuPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 380));
 
         SystemLogo.setBackground(new java.awt.Color(0, 0, 0));
         SystemLogo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         SystemLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/images__2_-removebg-preview.png"))); // NOI18N
         SystemLogo.setMaximumSize(new java.awt.Dimension(60, 60));
         SystemLogo.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel1.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
+        jPanel1.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 90, 70));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        SignUpHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 40)); // NOI18N
+        SignUpHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 24)); // NOI18N
         SignUpHeader.setText("Manage Manwhas");
-        jPanel2.add(SignUpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 40));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 510, 10));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 490, 10));
+        jPanel2.add(SignUpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, -1, 30));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 520, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menu_book_40dp_1F1F1F_FILL0_wght400_GRAD0_opsz40.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 40, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 40, 30));
 
-        refrsh.setText("Refresh");
-        refrsh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refrshActionPerformed(evt);
-            }
-        });
-        jPanel2.add(refrsh, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
-
-        Add.setText("Add");
-        Add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        Update.setText("Update");
-        Update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
-
-        Delete.setText("Delete");
-        Delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
-
+        adminManwhaTable.setBackground(new java.awt.Color(0, 0, 0));
+        adminManwhaTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        adminManwhaTable.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        adminManwhaTable.setForeground(new java.awt.Color(255, 255, 255));
         adminManwhaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -209,7 +171,17 @@ config cfg = new config();
         ));
         jScrollPane1.setViewportView(adminManwhaTable);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 510, 290));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 550, 350));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 550, 380));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 760, 20));
+
+        Searchb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchbActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Searchb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 110, 30));
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,32 +191,56 @@ config cfg = new config();
                 btnSearchActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 30, 30));
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 30, 30));
 
-        Searchb.addActionListener(new java.awt.event.ActionListener() {
+        refrsh.setText("Refresh");
+        refrsh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchbActionPerformed(evt);
+                refrshActionPerformed(evt);
             }
         });
-        jPanel2.add(Searchb, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 110, 30));
+        jPanel1.add(refrsh, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 80, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 510, 380));
+        Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 70, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 450));
+        Update.setText("Update");
+        Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 70, 30));
+
+        Add.setText("Add");
+        Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 70, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 480));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void OverviewAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverviewAdminActionPerformed
-admindashboard admindashboard = new admindashboard();
-admindashboard.setVisible(true);
+        admindashboard admindashboard = new admindashboard();
+        admindashboard.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_OverviewAdminActionPerformed
 
     private void UsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsersActionPerformed
         manageuser manageuser = new manageuser();
         manageuser.setVisible(true);
-        this.dispose();
+this.dispose();
 
     }//GEN-LAST:event_UsersActionPerformed
 
@@ -253,74 +249,74 @@ this.dispose();
     }//GEN-LAST:event_ManageManwhaActionPerformed
 
     private void LogoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutAdminActionPerformed
-        if (JOptionPane.showConfirmDialog(this,
+if (JOptionPane.showConfirmDialog(this,
             "Are you sure you want to logout?",
             "Confirm Logout",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-        new login().setVisible(true);
-        this.dispose();
-        }
+new login().setVisible(true);
+this.dispose();
+                                                                                                                                                              }
 
     }//GEN-LAST:event_LogoutAdminActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-        int row = adminManwhaTable.getSelectedRow();
+int row = adminManwhaTable.getSelectedRow();
 
 if(row == -1){
-    JOptionPane.showMessageDialog(this, "Select a row first!");
-    return;
-}
+              JOptionPane.showMessageDialog(this, "Select a row first!");
+return;
+                                                                                                                                                      }
 
 int id = Integer.parseInt(adminManwhaTable.getValueAt(row, 0).toString());
-String title = adminManwhaTable.getValueAt(row, 1).toString();
-String genre = adminManwhaTable.getValueAt(row, 2).toString();
-String author = adminManwhaTable.getValueAt(row, 3).toString();
-String status = adminManwhaTable.getValueAt(row, 4).toString();
+             String title = adminManwhaTable.getValueAt(row, 1).toString();
+             String genre = adminManwhaTable.getValueAt(row, 2).toString();
+             String author = adminManwhaTable.getValueAt(row, 3).toString();
+             String status = adminManwhaTable.getValueAt(row, 4).toString();
 
 new Update(id, title, genre, author, status).setVisible(true);
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
             String keyword = Searchb.getText().trim();
-    config cfg = new config();
+            config cfg = new config();
 
     if (!keyword.isEmpty()) {
-        cfg.searchAdminManwha(keyword, adminManwhaTable);
+             cfg.searchAdminManwha(keyword, adminManwhaTable);
     } else {
-        loadManwha();
-    }
+             loadManwha();
+                                                                                                                                                          }
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void SearchbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbActionPerformed
          String keyword = Searchb.getText().trim();
-    config cfg = new config();
+         config cfg = new config();
 
-    if (!keyword.isEmpty()) {
+if (!keyword.isEmpty()) {
         cfg.searchManwha(keyword, adminManwhaTable);
     } else {
         loadManwha();
-    }
+                                                                                                                                                          }
     }//GEN-LAST:event_SearchbActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-       int row = adminManwhaTable.getSelectedRow();
+ int row = adminManwhaTable.getSelectedRow();
 
 if(row == -1){
-    JOptionPane.showMessageDialog(this, "Select a row first!");
+               JOptionPane.showMessageDialog(this, "Select a row first!");
     return;
-}
+                                                                                                                                                      }
 
 int confirm = JOptionPane.showConfirmDialog(this, 
         "Are you sure you want to delete this manwha?",
         "Confirm Delete",
-        JOptionPane.YES_NO_OPTION);
+               JOptionPane.YES_NO_OPTION);
 
 if(confirm == JOptionPane.YES_OPTION){
     int id = Integer.parseInt(adminManwhaTable.getValueAt(row, 0).toString());
-    cfg.deleteManwha(id);
-    loadManwha();
-}
+         cfg.deleteManwha(id);
+         loadManwha();
+                                                                                                                                                      }
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
@@ -371,8 +367,6 @@ Add.setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
-    private javax.swing.JButton AddtoF;
-    private javax.swing.JButton AddtoF1;
     private javax.swing.JButton Delete;
     private javax.swing.JButton LogoutAdmin;
     private javax.swing.JButton ManageManwha;
@@ -390,7 +384,7 @@ Add.setVisible(true);
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton refrsh;
     // End of variables declaration//GEN-END:variables
 }

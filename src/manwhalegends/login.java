@@ -29,6 +29,7 @@ public class login extends javax.swing.JFrame {
     //constructor ni wally boldyola
     public login() {
         initComponents();
+        getRootPane().setDefaultButton(LoginButton);
         
  
     }
@@ -43,8 +44,8 @@ public class login extends javax.swing.JFrame {
     private void initComponents() {
 
         LogInCheckBox = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        BackgroundPanel = new javax.swing.JPanel();
+        LoginPanel = new javax.swing.JPanel();
         SignUpHeader = new javax.swing.JLabel();
         LoginEmail = new javax.swing.JTextField();
         Separator2 = new javax.swing.JSeparator();
@@ -70,23 +71,23 @@ public class login extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        BackgroundPanel.setBackground(new java.awt.Color(0, 0, 0));
+        BackgroundPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        LoginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         SignUpHeader.setFont(new java.awt.Font("Palatino Linotype", 3, 40)); // NOI18N
         SignUpHeader.setText("Login");
-        jPanel2.add(SignUpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 11, -1, -1));
-        jPanel2.add(LoginEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 109, 400, 30));
-        jPanel2.add(Separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 145, 400, 15));
-        jPanel2.add(Separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 400, 15));
+        LoginPanel.add(SignUpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 11, -1, -1));
+        LoginPanel.add(LoginEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 109, 400, 30));
+        LoginPanel.add(Separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 145, 400, 15));
+        LoginPanel.add(Separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 400, 15));
 
         LoginPasswordIcon.setBackground(new java.awt.Color(0, 0, 0));
         LoginPasswordIcon.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         LoginPasswordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/password_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png"))); // NOI18N
         LoginPasswordIcon.setOpaque(true);
-        jPanel2.add(LoginPasswordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 171, -1, 30));
+        LoginPanel.add(LoginPasswordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 171, -1, 30));
 
         LoginButton.setBackground(new java.awt.Color(255, 255, 255));
         LoginButton.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
@@ -107,12 +108,12 @@ public class login extends javax.swing.JFrame {
                 LoginButtonKeyPressed(evt);
             }
         });
-        jPanel2.add(LoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 200, -1));
+        LoginPanel.add(LoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 200, -1));
 
         NewLbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         NewLbl.setText("New?");
         NewLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(NewLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, 20));
+        LoginPanel.add(NewLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, 20));
 
         CreateACClbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         CreateACClbl.setForeground(new java.awt.Color(102, 102, 255));
@@ -123,20 +124,20 @@ public class login extends javax.swing.JFrame {
                 CreateACClblMouseClicked(evt);
             }
         });
-        jPanel2.add(CreateACClbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, 20));
+        LoginPanel.add(CreateACClbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, 20));
 
         LoginEmailIcon1.setBackground(new java.awt.Color(0, 0, 0));
         LoginEmailIcon1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         LoginEmailIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png"))); // NOI18N
         LoginEmailIcon1.setOpaque(true);
-        jPanel2.add(LoginEmailIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 109, -1, 30));
+        LoginPanel.add(LoginEmailIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 109, -1, 30));
 
         LoginPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginPasswordActionPerformed(evt);
             }
         });
-        jPanel2.add(LoginPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 400, 30));
+        LoginPanel.add(LoginPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 400, 30));
 
         SystemLogo.setBackground(new java.awt.Color(0, 0, 0));
         SystemLogo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -144,16 +145,17 @@ public class login extends javax.swing.JFrame {
         SystemLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         SystemLogo.setMaximumSize(new java.awt.Dimension(60, 60));
         SystemLogo.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel2.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 70));
+        LoginPanel.add(SystemLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 70));
 
         RememberMe.setText("Remember Me");
-        jPanel2.add(RememberMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        LoginPanel.add(RememberMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 510, 330));
+        BackgroundPanel.add(LoginPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 510, 330));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 390));
+        getContentPane().add(BackgroundPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 390));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogInCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInCheckBoxActionPerformed
@@ -165,7 +167,10 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginButtonMouseClicked
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-                     String email = LoginEmail.getText().trim();
+                  
+        
+        
+        String email = LoginEmail.getText().trim();
                      String password = LoginPassword.getText().trim();
 
  try {
@@ -179,22 +184,34 @@ public class login extends javax.swing.JFrame {
                    ResultSet rs = pst.executeQuery();
  
  if (rs.next()) {
-            
-                   Session.getInstance().setUserId(rs.getInt("u_id"));
-                   Session.getInstance().setUserType(rs.getString("type"));
+           
+    Session.getInstance().setSession(
+        rs.getInt("u_id"),
+        rs.getString("name"),
+        rs.getString("email"),
+        rs.getString("type"),
+        rs.getString("status")
+    );
+
+    JOptionPane.showMessageDialog(null, "Login Successful!");
+
 
                    String userType = rs.getString("type");
 
  if (userType.equalsIgnoreCase("admin")) {
                 
+
 new admindashboard().setVisible(true);
 this.dispose();
 
 } else if (userType.equalsIgnoreCase("reader")) {
 
-new readerdashboard().setVisible(true);
-this.dispose();
+                new readerdashboard().setVisible(true);
+                this.dispose();
+             
             }
+            
+            
 
  } else {
                      JOptionPane.showMessageDialog(this, "Invalid Email or Password!");
@@ -257,11 +274,13 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BackgroundPanel;
     private javax.swing.JLabel CreateACClbl;
     private javax.swing.JCheckBox LogInCheckBox;
     private javax.swing.JButton LoginButton;
     private javax.swing.JTextField LoginEmail;
     private javax.swing.JLabel LoginEmailIcon1;
+    private javax.swing.JPanel LoginPanel;
     private javax.swing.JPasswordField LoginPassword;
     private javax.swing.JLabel LoginPasswordIcon;
     private javax.swing.JLabel NewLbl;
@@ -270,7 +289,5 @@ this.dispose();
     private javax.swing.JSeparator Separator3;
     private javax.swing.JLabel SignUpHeader;
     private javax.swing.JLabel SystemLogo;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
