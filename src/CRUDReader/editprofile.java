@@ -1,8 +1,3 @@
-    /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CRUDReader;
 
 import config.Session;
@@ -10,23 +5,17 @@ import config.config;
 import java.awt.Image;
 import java.io.File;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Resty
- */
+
 public class editprofile extends javax.swing.JFrame {
 
     private String selectedImagePath = "";
-    /**
-     * Creates new form editprofile
-     */
+
     public editprofile() {
         initComponents();
         loadUserData();
@@ -37,7 +26,7 @@ public class editprofile extends javax.swing.JFrame {
 
     try {
         Connection conn = config.connectDB();
-        String sql = "SELECT name, email, password, image FROM tbl_Acc WHERE u_id=?";
+        String sql = "SELECT name, email,  image FROM tbl_Acc WHERE u_id=?";
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setInt(1, Session.getInstance().getUserId());
 
@@ -47,7 +36,7 @@ public class editprofile extends javax.swing.JFrame {
 
             EdName.setText(rs.getString("name"));
             EdEmail.setText(rs.getString("email"));
-            EdPass.setText(rs.getString("password"));
+           
 
             selectedImagePath = rs.getString("image");
 
@@ -105,13 +94,12 @@ public class editprofile extends javax.swing.JFrame {
         Save = new javax.swing.JButton();
         jSeparator10 = new javax.swing.JSeparator();
         jSeparator11 = new javax.swing.JSeparator();
-        jSeparator12 = new javax.swing.JSeparator();
         EdName = new javax.swing.JTextField();
         EdEmail = new javax.swing.JTextField();
-        EdPass = new javax.swing.JTextField();
         ImagePreview = new javax.swing.JLabel();
         ChooseImage = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        Logo = new javax.swing.JLabel();
+        ChangePasspnl = new javax.swing.JPanel();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -218,9 +206,21 @@ public class editprofile extends javax.swing.JFrame {
         EEmail.setText("Email:");
         jPanel1.add(EEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
-        EPAssword.setFont(new java.awt.Font("Palatino Linotype", 2, 18)); // NOI18N
-        EPAssword.setText("Password:");
-        jPanel1.add(EPAssword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        EPAssword.setFont(new java.awt.Font("Palatino Linotype", 2, 14)); // NOI18N
+        EPAssword.setForeground(new java.awt.Color(0, 0, 153));
+        EPAssword.setText("Change Password");
+        EPAssword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        EPAssword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EPAsswordMouseClicked(evt);
+            }
+        });
+        EPAssword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EPAsswordKeyPressed(evt);
+            }
+        });
+        jPanel1.add(EPAssword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, 20));
 
         Cancelbtn1.setText("Cancel");
         Cancelbtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -228,7 +228,7 @@ public class editprofile extends javax.swing.JFrame {
                 Cancelbtn1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Cancelbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, 70, 30));
+        jPanel1.add(Cancelbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 70, 30));
 
         Save.setText("Save");
         Save.addActionListener(new java.awt.event.ActionListener() {
@@ -236,10 +236,9 @@ public class editprofile extends javax.swing.JFrame {
                 SaveActionPerformed(evt);
             }
         });
-        jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 70, 30));
+        jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 70, 30));
         jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 50, 20));
         jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 50, 20));
-        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 70, 20));
 
         EdName.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
         EdName.addActionListener(new java.awt.event.ActionListener() {
@@ -256,14 +255,6 @@ public class editprofile extends javax.swing.JFrame {
             }
         });
         jPanel1.add(EdEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 360, 30));
-
-        EdPass.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
-        EdPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EdPassActionPerformed(evt);
-            }
-        });
-        jPanel1.add(EdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 360, 30));
         jPanel1.add(ImagePreview, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 180, 170));
 
         ChooseImage.setText("Choose Image");
@@ -274,8 +265,21 @@ public class editprofile extends javax.swing.JFrame {
         });
         jPanel1.add(ChooseImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manwhalegends.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 40, 220, 100));
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manwhalegends.png"))); // NOI18N
+        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 220, 100));
+
+        ChangePasspnl.setBackground(new java.awt.Color(255, 255, 255));
+        ChangePasspnl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChangePasspnlMouseClicked(evt);
+            }
+        });
+        ChangePasspnl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ChangePasspnlKeyPressed(evt);
+            }
+        });
+        jPanel1.add(ChangePasspnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 440));
 
@@ -316,15 +320,14 @@ public class editprofile extends javax.swing.JFrame {
 
     Connection conn = config.connectDB();
 
-    String sql = "UPDATE tbl_Acc SET name=?, email=?, password=?, image=? WHERE u_id=?";
+    String sql = "UPDATE tbl_Acc SET name=?, email=?, image=? WHERE u_id=?";
 
     PreparedStatement pst = conn.prepareStatement(sql);
 
     pst.setString(1, EdName.getText());
     pst.setString(2, EdEmail.getText());
-    pst.setString(3, EdPass.getText());
-    pst.setString(4, selectedImagePath);
-    pst.setInt(5, Session.getInstance().getUserId());
+    pst.setString(3, selectedImagePath);
+    pst.setInt(4, Session.getInstance().getUserId());
 
     pst.executeUpdate();
 
@@ -346,10 +349,6 @@ public class editprofile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EdEmailActionPerformed
 
-    private void EdPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EdPassActionPerformed
-
     private void ChooseImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChooseImageActionPerformed
        JFileChooser chooser = new JFileChooser();
 chooser.showOpenDialog(null);
@@ -366,34 +365,28 @@ if (file != null) {
 }
     }//GEN-LAST:event_ChooseImageActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(editprofile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(editprofile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(editprofile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(editprofile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void EPAsswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EPAsswordKeyPressed
+   
+    }//GEN-LAST:event_EPAsswordKeyPressed
 
-        /* Create and display the form */
+    private void ChangePasspnlKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ChangePasspnlKeyPressed
+         
+    }//GEN-LAST:event_ChangePasspnlKeyPressed
+
+    private void ChangePasspnlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChangePasspnlMouseClicked
+         PasswordProfile PasswordProfile = new PasswordProfile();
+        PasswordProfile.setVisible(true);
+ this.dispose();
+    }//GEN-LAST:event_ChangePasspnlMouseClicked
+
+    private void EPAsswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPAsswordMouseClicked
+         PasswordProfile PasswordProfile = new PasswordProfile();
+        PasswordProfile.setVisible(true);
+ this.dispose();    
+    }//GEN-LAST:event_EPAsswordMouseClicked
+
+    
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new editprofile().setVisible(true);
@@ -415,24 +408,23 @@ if (file != null) {
     private javax.swing.JButton Addbtn;
     private javax.swing.JButton Cancelbtn;
     private javax.swing.JButton Cancelbtn1;
+    private javax.swing.JPanel ChangePasspnl;
     private javax.swing.JButton ChooseImage;
     private javax.swing.JLabel EEmail;
     private javax.swing.JLabel EName;
     private javax.swing.JLabel EPAssword;
     private javax.swing.JTextField EdEmail;
     private javax.swing.JTextField EdName;
-    private javax.swing.JTextField EdPass;
     private javax.swing.JLabel ImagePreview;
+    private javax.swing.JLabel Logo;
     private javax.swing.JButton Save;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;

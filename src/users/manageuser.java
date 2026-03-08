@@ -48,11 +48,12 @@ public void loadUsers() {
         UsersTable = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
-        RefreshUser = new javax.swing.JButton();
         AddUser = new javax.swing.JButton();
         Update = new javax.swing.JButton();
-        DeleteUser = new javax.swing.JButton();
+        Approve = new javax.swing.JButton();
         Searchbar = new javax.swing.JTextField();
+        Refresh = new javax.swing.JLabel();
+        DeleteUser1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,15 +128,7 @@ public void loadUsers() {
         MainPNL.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 550, 20));
 
         BodyPanel.add(MainPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 550, 390));
-        BodyPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 760, 20));
-
-        RefreshUser.setText("Refresh");
-        RefreshUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RefreshUserActionPerformed(evt);
-            }
-        });
-        BodyPanel.add(RefreshUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 90, 30));
+        BodyPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 60, 780, 20));
 
         AddUser.setText("Add");
         AddUser.addActionListener(new java.awt.event.ActionListener() {
@@ -153,13 +146,13 @@ public void loadUsers() {
         });
         BodyPanel.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 80, 30));
 
-        DeleteUser.setText("Delete");
-        DeleteUser.addActionListener(new java.awt.event.ActionListener() {
+        Approve.setText("Approve");
+        Approve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteUserActionPerformed(evt);
+                ApproveActionPerformed(evt);
             }
         });
-        BodyPanel.add(DeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 80, 30));
+        BodyPanel.add(Approve, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 80, 30));
 
         Searchbar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +160,22 @@ public void loadUsers() {
             }
         });
         BodyPanel.add(Searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 130, 30));
+
+        Refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refreshwhite.png"))); // NOI18N
+        Refresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefreshMouseClicked(evt);
+            }
+        });
+        BodyPanel.add(Refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 20, 30));
+
+        DeleteUser1.setText("Delete");
+        DeleteUser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteUser1ActionPerformed(evt);
+            }
+        });
+        BodyPanel.add(DeleteUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 80, 30));
 
         getContentPane().add(BodyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 480));
 
@@ -201,10 +210,6 @@ this.dispose();
                                                                                                                                                                  }
     }//GEN-LAST:event_LogoutAdminActionPerformed
 
-    private void RefreshUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshUserActionPerformed
-              loadUsers();
-    }//GEN-LAST:event_RefreshUserActionPerformed
-
     private void AddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserActionPerformed
            AddUsers AddUser = new AddUsers();
             AddUser.setVisible(true);
@@ -228,32 +233,30 @@ int u_id = Integer.parseInt(UsersTable.getValueAt(row, 0).toString());
              Update.setVisible(true);
     }//GEN-LAST:event_UpdateActionPerformed
 
-    private void DeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUserActionPerformed
- int row = UsersTable.getSelectedRow();
+    private void ApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveActionPerformed
+ int selectedRow = UsersTable.getSelectedRow();
 
- if (row == -1) {
-        JOptionPane.showMessageDialog(this, "Please select a user to delete.");
-return;
-                                                                                                                                                                         }
+if (selectedRow == -1) {
+    JOptionPane.showMessageDialog(this, "Please select a user first!");
+    return;
+}
 
-int u_id = Integer.parseInt(UsersTable.getValueAt(row, 0).toString());
+int userId = Integer.parseInt(UsersTable.getValueAt(selectedRow, 0).toString());
 
-int confirm = JOptionPane.showConfirmDialog(this,
-            "Are you sure you want to delete this user?",
-            "Confirm Delete",
-            JOptionPane.YES_NO_OPTION);
+try {
+    config con = new config();
+    String sql = "UPDATE tbl_Acc SET status='ACTIVE' WHERE u_id=?";
+    con.addRecord(sql, userId);
 
-if (confirm == JOptionPane.YES_OPTION) {
-        try {
-            config con = new config();
-            con.executeUpdate("DELETE FROM tbl_Acc WHERE u_id = " + u_id);
-            JOptionPane.showMessageDialog(this, "User deleted successfully!");
-            loadUsers();
- } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error deleting user: " + e.getMessage());
-                                                                                                                                                                             }
-                                                                                                                                                                         }
-    }//GEN-LAST:event_DeleteUserActionPerformed
+    JOptionPane.showMessageDialog(this, "User Approved!");
+
+    // refresh table
+    con.getAllUsers(UsersTable);
+
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+}
+    }//GEN-LAST:event_ApproveActionPerformed
 
     private void SearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbarActionPerformed
                                     
@@ -264,6 +267,14 @@ if (confirm == JOptionPane.YES_OPTION) {
     config con = new config();
     con.displayData(sql, UsersTable, "%" + search + "%", "%" + search + "%");
     }//GEN-LAST:event_SearchbarActionPerformed
+
+    private void RefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshMouseClicked
+        loadUsers();
+    }//GEN-LAST:event_RefreshMouseClicked
+
+    private void DeleteUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUser1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteUser1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,15 +313,16 @@ if (confirm == JOptionPane.YES_OPTION) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUser;
+    private javax.swing.JButton Approve;
     private javax.swing.JPanel BodyPanel;
-    private javax.swing.JButton DeleteUser;
+    private javax.swing.JButton DeleteUser1;
     private javax.swing.JButton LogoutAdmin;
     private javax.swing.JPanel MainPNL;
     private javax.swing.JLabel ManageUserHeader;
     private javax.swing.JButton Manwha;
     private javax.swing.JPanel MenuPNL;
     private javax.swing.JButton OverviewAdmin;
-    private javax.swing.JButton RefreshUser;
+    private javax.swing.JLabel Refresh;
     private javax.swing.JTextField Searchbar;
     private javax.swing.JLabel SystemLogo;
     private javax.swing.JButton Update;

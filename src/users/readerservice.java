@@ -10,11 +10,7 @@ import config.config;
 import javax.swing.JOptionPane;
 import manwhalegends.login;
 import userdashboard.readerdashboard;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
