@@ -1,6 +1,7 @@
 package users;
 
 import CRUDadmin.Add;
+import CRUDadmin.ManageChapters;
 import CRUDadmin.Update;
 import config.config;
 import java.sql.Connection;
@@ -79,11 +80,12 @@ public void loadManwha() {
         adminManwhaTable = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         Searchb = new javax.swing.JTextField();
-        btnSearch = new javax.swing.JButton();
         refrsh = new javax.swing.JButton();
+        ManageChapters = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
         Update = new javax.swing.JButton();
         Add = new javax.swing.JButton();
+        btnSearch1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -181,25 +183,25 @@ public void loadManwha() {
                 SearchbActionPerformed(evt);
             }
         });
-        jPanel1.add(Searchb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 110, 30));
+        jPanel1.add(Searchb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 100, 30));
 
-        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 30, 30));
-
-        refrsh.setText("Refresh");
+        refrsh.setBackground(new java.awt.Color(255, 255, 255));
+        refrsh.setForeground(new java.awt.Color(255, 255, 255));
+        refrsh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refreshwhite.png"))); // NOI18N
         refrsh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refrshActionPerformed(evt);
             }
         });
-        jPanel1.add(refrsh, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 80, 30));
+        jPanel1.add(refrsh, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 30, 20));
+
+        ManageChapters.setText("Chapters");
+        ManageChapters.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageChaptersActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ManageChapters, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 80, 30));
 
         Delete.setText("Delete");
         Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +226,16 @@ public void loadManwha() {
             }
         });
         jPanel1.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 70, 30));
+
+        btnSearch1.setBackground(new java.awt.Color(255, 255, 255));
+        btnSearch1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
+        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSearch1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 30, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 480));
 
@@ -277,16 +289,9 @@ int id = Integer.parseInt(adminManwhaTable.getValueAt(row, 0).toString());
 new Update(id, title, genre, author, status).setVisible(true);
     }//GEN-LAST:event_UpdateActionPerformed
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-            String keyword = Searchb.getText().trim();
-            config cfg = new config();
-
-    if (!keyword.isEmpty()) {
-             cfg.searchAdminManwha(keyword, adminManwhaTable);
-    } else {
-             loadManwha();
-                                                                                                                                                          }
-    }//GEN-LAST:event_btnSearchActionPerformed
+    private void refrshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrshActionPerformed
+          loadManwha();
+    }//GEN-LAST:event_refrshActionPerformed
 
     private void SearchbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbActionPerformed
          String keyword = Searchb.getText().trim();
@@ -326,9 +331,22 @@ Add.setVisible(true);
 
     }//GEN-LAST:event_AddActionPerformed
 
-    private void refrshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrshActionPerformed
-        loadManwha();
-    }//GEN-LAST:event_refrshActionPerformed
+    private void ManageChaptersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageChaptersActionPerformed
+      int row = adminManwhaTable.getSelectedRow();
+        if (row == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Select a manwha first!");
+            return;
+        }
+        int manwhaId = Integer.parseInt(adminManwhaTable.getValueAt(row, 0).toString());
+        String manwhaTitle = adminManwhaTable.getValueAt(row, 1).toString();
+        new ManageChapters(manwhaId, manwhaTitle).setVisible(true);
+    
+
+    }//GEN-LAST:event_ManageChaptersActionPerformed
+
+    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearch1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,12 +381,14 @@ Add.setVisible(true);
                 new managemanwha().setVisible(true);
             }
         });
-    }
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JButton Delete;
     private javax.swing.JButton LogoutAdmin;
+    private javax.swing.JButton ManageChapters;
     private javax.swing.JButton ManageManwha;
     private javax.swing.JPanel MenuPNL;
     private javax.swing.JButton OverviewAdmin;
@@ -378,7 +398,7 @@ Add.setVisible(true);
     private javax.swing.JButton Update;
     private javax.swing.JButton Users;
     private javax.swing.JTable adminManwhaTable;
-    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSearch1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

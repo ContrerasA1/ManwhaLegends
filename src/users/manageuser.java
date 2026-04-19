@@ -273,7 +273,30 @@ try {
     }//GEN-LAST:event_RefreshMouseClicked
 
     private void DeleteUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUser1ActionPerformed
-        // TODO add your handling code here:
+       int row = UsersTable.getSelectedRow();
+
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a user to delete.");
+        return;
+    }
+
+    int userId = Integer.parseInt(UsersTable.getValueAt(row, 0).toString());
+    String userName = UsersTable.getValueAt(row, 1).toString();
+
+    int confirm = JOptionPane.showConfirmDialog(this,
+        "Are you sure you want to delete user: " + userName + "?",
+        "Confirm Delete",
+        JOptionPane.YES_NO_OPTION);
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        config con = new config();
+        String sql = "DELETE FROM tbl_Acc WHERE u_id=?";
+        con.addRecord(sql, userId);
+
+        JOptionPane.showMessageDialog(this, "User deleted successfully!");
+        loadUsers(); // refresh table
+    }
+
     }//GEN-LAST:event_DeleteUser1ActionPerformed
 
     /**

@@ -45,22 +45,25 @@ PreparedStatement pst = conn.prepareStatement(sql);
             Description.setText(rs.getString("description"));
 
             // IMAGE
-           String imagePath = rs.getString("image");
+        String imagePath = rs.getString("image");
 
-ImageIcon icon = new ImageIcon(imagePath);
+java.net.URL imgURL = getClass().getResource("/" + imagePath);
 
-Image img = icon.getImage();
-Image scaledImg = img.getScaledInstance(
-        image.getWidth(),
-        image.getHeight(),
-        Image.SCALE_SMOOTH
-);
+if (imgURL != null) {
+    ImageIcon icon = new ImageIcon(imgURL);
 
-image.setIcon(new ImageIcon(scaledImg));
+    Image img = icon.getImage();
+    Image scaledImg = img.getScaledInstance(
+            image.getWidth(),
+            image.getHeight(),
+            Image.SCALE_SMOOTH
+    );
 
-image.setIcon(new ImageIcon(scaledImg));  
+    image.setIcon(new ImageIcon(scaledImg));
+} else {
+    System.out.println("Image not found: " + imagePath);
+}
         }
-
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, e.getMessage());
     }
@@ -92,11 +95,7 @@ image.setIcon(new ImageIcon(scaledImg));
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         Backbtn = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        ReaderProfile = new javax.swing.JButton();
-        Explore = new javax.swing.JButton();
-        Favorites = new javax.swing.JButton();
-        LogoutReader = new javax.swing.JButton();
+        Read = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,76 +179,23 @@ image.setIcon(new ImageIcon(scaledImg));
         });
         jPanel2.add(Backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 377, 70, 30));
 
+        Read.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
+        Read.setText("READ");
+        Read.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Read.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReadActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Read, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, -1, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 600, 410));
 
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ReaderProfile.setText("Profile");
-        ReaderProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReaderProfileActionPerformed(evt);
-            }
-        });
-        jPanel3.add(ReaderProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 40));
-
-        Explore.setText("Explore");
-        Explore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExploreActionPerformed(evt);
-            }
-        });
-        jPanel3.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 90, 40));
-
-        Favorites.setText("Favorites");
-        Favorites.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FavoritesActionPerformed(evt);
-            }
-        });
-        jPanel3.add(Favorites, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 90, 40));
-
-        LogoutReader.setText("Logout");
-        LogoutReader.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutReaderActionPerformed(evt);
-            }
-        });
-        jPanel3.add(LogoutReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 90, 40));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 600, 60));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 430));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ReaderProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReaderProfileActionPerformed
-        readerdashboard readerdashboard = new readerdashboard();
-        readerdashboard.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ReaderProfileActionPerformed
-
-    private void ExploreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExploreActionPerformed
-        readerservice readerservice = new readerservice();
-        readerservice.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ExploreActionPerformed
-
-    private void FavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FavoritesActionPerformed
-
-    }//GEN-LAST:event_FavoritesActionPerformed
-
-    private void LogoutReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutReaderActionPerformed
-        if (JOptionPane.showConfirmDialog(this,
-            "Are you sure you want to logout?",
-            "Confirm Logout",
-            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
-        new login().setVisible(true);
-        this.dispose();
-        }
-    }//GEN-LAST:event_LogoutReaderActionPerformed
 
     private void StatusComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_StatusComponentRemoved
         // TODO add your handling code here:
@@ -259,6 +205,10 @@ image.setIcon(new ImageIcon(scaledImg));
   
     this.dispose();
     }//GEN-LAST:event_BackbtnActionPerformed
+
+    private void ReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadActionPerformed
+        new ChaptersPages.Chapters(manwhaId).setVisible(true);
+    }//GEN-LAST:event_ReadActionPerformed
 
  
     public static void main(String args[]) {
@@ -297,22 +247,18 @@ image.setIcon(new ImageIcon(scaledImg));
     private javax.swing.JLabel Author;
     private javax.swing.JButton Backbtn;
     private javax.swing.JTextArea Description;
-    private javax.swing.JButton Explore;
-    private javax.swing.JButton Favorites;
     private javax.swing.JLabel FavoritesHeader;
     private javax.swing.JLabel Genre;
-    private javax.swing.JButton LogoutReader;
     private javax.swing.JLabel MAuthor;
     private javax.swing.JLabel MGenre;
     private javax.swing.JLabel MStatus;
-    private javax.swing.JButton ReaderProfile;
+    private javax.swing.JButton Read;
     private javax.swing.JScrollPane ScrollPnlDescript;
     private javax.swing.JLabel Status;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel image;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
